@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 
 const navItems = [
-  { label: "Início", href: "#" },
   {
     label: "Institucional",
     href: "#institucional",
@@ -15,26 +14,8 @@ const navItems = [
     ],
   },
   {
-    label: "Serviços Aduaneiros",
+    label: "Serviços",
     href: "#servicos",
-    submenu: [
-      { label: "Declaração Aduaneira", href: "https://jue.mcnet.co.mz/" },
-      { label: "E-viajante", href: "https://e-viajante.at.gov.mz/" },
-      { label: "Janela Única Electrónica", href: "https://jue.mcnet.co.mz/" },
-      { label: "Regimes Aduaneiros", href: "https://at-mocambique.tributo670.workers.dev" },
-      { label: "Despacho Aduaneiro", href: "https://at-mocambique.tributo670.workers.dev" },
-    ],
-  },
-  {
-    label: "Serviços Tributários",
-    href: "#servicos",
-    submenu: [
-      { label: "Portal do Contribuinte", href: "https://cas-portaldocontribuinte.at.gov.mz/cas/login?service=https%3A%2F%2Fportaldocontribuinte.at.gov.mz%2Fj_spring_cas_security_check" },
-      { label: "e-Declaração", href: "https://edeclaracao.at.gov.mz/" },
-      { label: "Registo de Contribuintes (NUIT)", href: "https://nuit.at.gov.mz/nuit/bootstrap/theme/work/Impressao_Carta.aspx" },
-      { label: "Formulários de Declarações", href: "https://at-mocambique.tributo670.workers.dev/formularios.html" },
-      { label: "Pequenos Contribuintes (ISPC)", href: "https://at-mocambique.tributo670.workers.dev" },
-    ],
   },
   {
     label: "Legislação",
@@ -68,6 +49,18 @@ const navItems = [
   },
 ];
 
+// Função auxiliar para realizar a rolagem suave em links internos
+const handleHashScroll = (e, href) => {
+  if (href.startsWith("#")) {
+    e.preventDefault();
+    const targetId = href.substring(1);
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+};
+
 function DropdownMenu({ items, isOpen }) {
   return (
     <div
@@ -83,6 +76,7 @@ function DropdownMenu({ items, isOpen }) {
           href={item.href}
           target={item.href.startsWith("http") ? "_blank" : undefined}
           rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+          onClick={(e) => handleHashScroll(e, item.href)}
           className="block px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary hover:text-primary-foreground transition-colors"
         >
           {item.label}
@@ -113,14 +107,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 sm:h-20">
 
-          {/* Logo */}
-          <div className="flex items-center gap-2">
+          {/* Logo — clicking returns to homepage */}
+          <a href="/" className="flex items-center gap-2 shrink-0">
             <img
               src="https://at-mocambique.tributo670.workers.dev/Imagens/logo-at.png"
-              alt="Autoridade Tributária de Moçambique"
+              alt="Autoridade Tributária de Moçambique — Início"
               className="h-12 sm:h-14 w-auto object-contain"
             />
-          </div>
+          </a>
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-0.5">
@@ -133,6 +127,7 @@ export default function Navbar() {
               >
                 <a
                   href={item.href}
+                  onClick={(e) => handleHashScroll(e, item.href)}
                   className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                     activeDropdown === item.label
                       ? "text-primary bg-primary/5"
@@ -181,7 +176,10 @@ export default function Navbar() {
               <div className="flex items-center justify-between">
                 <a
                   href={item.href}
-                  onClick={() => !item.submenu && setOpen(false)}
+                  onClick={(e) => {
+                    handleHashScroll(e, item.href);
+                    if (!item.submenu) setOpen(false);
+                  }}
                   className="flex-1 px-3 py-2.5 text-sm font-medium text-foreground/80 hover:bg-muted rounded-lg"
                 >
                   {item.label}
@@ -209,7 +207,10 @@ export default function Navbar() {
                       href={sub.href}
                       target={sub.href.startsWith("http") ? "_blank" : undefined}
                       rel={sub.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      onClick={() => setOpen(false)}
+                      onClick={(e) => {
+                        handleHashScroll(e, sub.href);
+                        setOpen(false);
+                      }}
                       className="block px-3 py-2 text-xs text-muted-foreground hover:text-primary hover:bg-muted rounded-lg"
                     >
                       {sub.label}
