@@ -1,52 +1,223 @@
-import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
 
 const navItems = [
   { label: "Início", href: "#" },
-  { label: "Institucional", href: "#institucional" },
-  { label: "Serviços Aduaneiros", href: "#servicos" },
-  { label: "Serviços Tributários", href: "#servicos" },
-  { label: "Legislação", href: "#" },
-  { label: "Informações", href: "#noticias" },
+  {
+    label: "Institucional",
+    href: "#institucional",
+    submenu: [
+      { label: "Sobre a AT", href: "#institucional" },
+      { label: "Organograma", href: "https://at-mocambique.tributo670.workers.dev" },
+      { label: "Directório", href: "https://at-mocambique.tributo670.workers.dev" },
+      { label: "Relatórios e Publicações", href: "https://at-mocambique.tributo670.workers.dev" },
+      { label: "Código de Conduta", href: "https://at-mocambique.tributo670.workers.dev/Imagens/C%C3%B3digo+de+Conduta+dos+Funcion%C3%A1rios+da+AT%20(1).pdf" },
+    ],
+  },
+  {
+    label: "Serviços Aduaneiros",
+    href: "#servicos",
+    submenu: [
+      { label: "Declaração Aduaneira", href: "https://jue.mcnet.co.mz/" },
+      { label: "E-viajante", href: "https://e-viajante.at.gov.mz/" },
+      { label: "Janela Única Electrónica", href: "https://jue.mcnet.co.mz/" },
+      { label: "Regimes Aduaneiros", href: "https://at-mocambique.tributo670.workers.dev" },
+      { label: "Despacho Aduaneiro", href: "https://at-mocambique.tributo670.workers.dev" },
+    ],
+  },
+  {
+    label: "Serviços Tributários",
+    href: "#servicos",
+    submenu: [
+      { label: "Portal do Contribuinte", href: "https://cas-portaldocontribuinte.at.gov.mz/cas/login?service=https%3A%2F%2Fportaldocontribuinte.at.gov.mz%2Fj_spring_cas_security_check" },
+      { label: "e-Declaração", href: "https://edeclaracao.at.gov.mz/" },
+      { label: "Registo de Contribuintes (NUIT)", href: "https://nuit.at.gov.mz/nuit/bootstrap/theme/work/Impressao_Carta.aspx" },
+      { label: "Formulários de Declarações", href: "https://at-mocambique.tributo670.workers.dev/formularios.html" },
+      { label: "Pequenos Contribuintes (ISPC)", href: "https://at-mocambique.tributo670.workers.dev" },
+    ],
+  },
+  {
+    label: "Legislação",
+    href: "#",
+    submenu: [
+      { label: "Código Tributário", href: "https://at-mocambique.tributo670.workers.dev/formularios.html" },
+      { label: "Regulamentos", href: "https://at-mocambique.tributo670.workers.dev/formularios.html" },
+      { label: "Circulares e Normas", href: "https://at-mocambique.tributo670.workers.dev/formularios.html" },
+      { label: "Boletins da República", href: "https://at-mocambique.tributo670.workers.dev/formularios.html" },
+      { label: "Lei de Combate ao Branqueamento", href: "https://at-mocambique.tributo670.workers.dev/formularios.html" },
+    ],
+  },
+  {
+    label: "Informações",
+    href: "#noticias",
+    submenu: [
+      { label: "Notícias", href: "#noticias" },
+      { label: "Perguntas Frequentes", href: "https://at-mocambique.tributo670.workers.dev" },
+      { label: "Calendário Fiscal", href: "#" },
+      { label: "Taxa de Câmbio", href: "https://at-mocambique.tributo670.workers.dev/tabela-cambio.html" },
+      { label: "Contactos", href: "#contacto" },
+    ],
+  },
+  {
+    label: "Ferramentas",
+    href: "/ferramentas",
+    submenu: [
+      { label: "Calculadora Fiscal", href: "/ferramentas" },
+      { label: "Taxa de Câmbio", href: "/taxa-de-cambio" },
+    ],
+  },
 ];
+
+function DropdownMenu({ items, isOpen }) {
+  return (
+    <div
+      className={`absolute top-full left-0 mt-1 w-64 bg-white rounded-xl shadow-xl border border-border overflow-hidden transition-all duration-200 ${
+        isOpen
+          ? "opacity-100 translate-y-0 pointer-events-auto"
+          : "opacity-0 -translate-y-2 pointer-events-none"
+      }`}
+    >
+      {items.map((item) => (
+        <a
+          key={item.label}
+          href={item.href}
+          target={item.href.startsWith("http") ? "_blank" : undefined}
+          rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+          className="block px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary hover:text-primary-foreground transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  );
+}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [mobileExpanded, setMobileExpanded] = useState(null);
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-border">
+    <header ref={navRef} className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 sm:h-20">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm">AT</div>
-            <div className="hidden sm:block">
-              <p className="font-display text-lg font-bold text-primary leading-tight">Autoridade Tributária</p>
-              <p className="text-xs text-muted-foreground tracking-wide">de Moçambique</p>
-            </div>
-            <p className="sm:hidden font-display text-base font-bold text-primary">AT Moçambique</p>
-          </div>
-          <div className="hidden lg:flex items-center gap-1">
-            {navItems.map((item) => (
-              <a key={item.label} href={item.href} className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-primary transition-colors rounded-lg hover:bg-muted">
-                {item.label}
-              </a>
-            ))}
-          </div>
+
+          {/* Logo */}
           <div className="flex items-center gap-2">
-            <a href="tel:1266" className="hidden sm:flex items-center gap-1.5 text-xs font-medium text-primary bg-primary/5 px-3 py-1.5 rounded-full">
+            <img
+              src="https://at-mocambique.tributo670.workers.dev/Imagens/logo-at.png"
+              alt="Autoridade Tributária de Moçambique"
+              className="h-12 sm:h-14 w-auto object-contain"
+            />
+          </div>
+
+          {/* Desktop nav */}
+          <nav className="hidden lg:flex items-center gap-0.5">
+            {navItems.map((item) => (
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => item.submenu && setActiveDropdown(item.label)}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <a
+                  href={item.href}
+                  className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                    activeDropdown === item.label
+                      ? "text-primary bg-primary/5"
+                      : "text-foreground/70 hover:text-primary hover:bg-muted"
+                  }`}
+                >
+                  {item.label}
+                  {item.submenu && (
+                    <ChevronDown
+                      className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                        activeDropdown === item.label ? "rotate-180" : ""
+                      }`}
+                    />
+                  )}
+                </a>
+                {item.submenu && (
+                  <DropdownMenu items={item.submenu} isOpen={activeDropdown === item.label} />
+                )}
+              </div>
+            ))}
+          </nav>
+
+          {/* Right side */}
+          <div className="flex items-center gap-2">
+            <a
+              href="tel:1266"
+              className="hidden sm:flex items-center gap-1.5 text-xs font-medium text-primary bg-primary/5 px-3 py-1.5 rounded-full"
+            >
               <Phone className="w-3.5 h-3.5" /> 1266
             </a>
-            <button onClick={() => setOpen(!open)} className="lg:hidden p-2 rounded-lg hover:bg-muted">
+            <button
+              onClick={() => setOpen(!open)}
+              className="lg:hidden p-2 rounded-lg hover:bg-muted"
+            >
               {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile nav */}
       {open && (
-        <div className="lg:hidden border-t border-border bg-white px-4 py-3 space-y-1">
+        <div className="lg:hidden border-t border-border bg-white px-4 py-3 space-y-1 max-h-[80vh] overflow-y-auto">
           {navItems.map((item) => (
-            <a key={item.label} href={item.href} onClick={() => setOpen(false)} className="block px-3 py-2.5 text-sm font-medium text-foreground/80 hover:bg-muted rounded-lg">
-              {item.label}
-            </a>
+            <div key={item.label}>
+              <div className="flex items-center justify-between">
+                <a
+                  href={item.href}
+                  onClick={() => !item.submenu && setOpen(false)}
+                  className="flex-1 px-3 py-2.5 text-sm font-medium text-foreground/80 hover:bg-muted rounded-lg"
+                >
+                  {item.label}
+                </a>
+                {item.submenu && (
+                  <button
+                    onClick={() =>
+                      setMobileExpanded(mobileExpanded === item.label ? null : item.label)
+                    }
+                    className="p-2 rounded-lg hover:bg-muted"
+                  >
+                    <ChevronDown
+                      className={`w-4 h-4 text-muted-foreground transition-transform ${
+                        mobileExpanded === item.label ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                )}
+              </div>
+              {item.submenu && mobileExpanded === item.label && (
+                <div className="ml-4 mt-1 space-y-0.5 border-l-2 border-primary/20 pl-3">
+                  {item.submenu.map((sub) => (
+                    <a
+                      key={sub.label}
+                      href={sub.href}
+                      target={sub.href.startsWith("http") ? "_blank" : undefined}
+                      rel={sub.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      onClick={() => setOpen(false)}
+                      className="block px-3 py-2 text-xs text-muted-foreground hover:text-primary hover:bg-muted rounded-lg"
+                    >
+                      {sub.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </div>
       )}
