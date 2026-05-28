@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, AlertTriangle } from "lucide-react";
 
 const channels = [
-  { icon: Phone, title: "Telefone", info: "Call Center: 1266", href: "tel:1266", color: "bg-blue-500" },
-  { icon: Mail, title: "Email", info: "linhadocontribuinte@at.gov.mz", href: "mailto:linhadocontribuinte@at.gov.mz", color: "bg-accent" },
-  { icon: MapPin, title: "Presencial", info: "Atendimento nas repartições da AT", href: "https://at-mocambique.tributo670.workers.dev/Presencial.html", color: "bg-amber-500" },
-  { icon: AlertTriangle, title: "Denúncias", info: "Canal seguro para denúncias", href: "https://denuncias.at.gov.mz/", color: "bg-red-500" },
+  { icon: Phone, title: "Telefone", info: "Call Center: 1266", href: "tel:1266" },
+  { icon: Mail, title: "Email", info: "linhadocontribuinte@at.gov.mz", href: "mailto:linhadocontribuinte@at.gov.mz" },
+  { icon: MapPin, title: "Presencial", info: "Atendimento nas repartições da AT", href: "https://at-mocambique.tributo670.workers.dev/Presencial.html" },
+  { icon: AlertTriangle, title: "Denúncias", info: "Canal seguro para denúncias", href: "https://denuncias.at.gov.mz/" },
 ];
 
 export default function ContactChannels() {
@@ -18,23 +18,21 @@ export default function ContactChannels() {
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {channels.map((c) => (
-          <a 
-            key={c.title} 
-            href={c.title === "Email" ? undefined : c.href} 
-            target={c.title === "Email" ? undefined : "_blank"} 
-            rel={c.title === "Email" ? undefined : "noopener noreferrer"} 
+          <a
+            key={c.title}
+            href={c.title === "Email" ? undefined : c.href}
+            target={c.title === "Email" ? undefined : "_blank"}
+            rel={c.title === "Email" ? undefined : "noopener noreferrer"}
             className="group text-center p-6 rounded-2xl bg-card border border-border hover:border-accent/40 hover:shadow-lg transition-all duration-300 flex flex-col"
           >
-            <div className={`w-14 h-14 rounded-2xl ${c.color} text-white flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
+            <div className="w-14 h-14 rounded-2xl bg-blue-500 text-white flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
               <c.icon className="w-6 h-6" />
             </div>
-            
             <h3 className="font-semibold text-foreground mb-1">{c.title}</h3>
             <p className="text-sm text-muted-foreground flex-1">{c.info}</p>
-            
             {c.title === "Email" && (
-              <Link 
-                to="/contacto" 
+              <Link
+                to="/contacto"
                 className="mt-3 text-xs font-semibold text-accent hover:underline self-start"
                 onClick={(e) => e.stopPropagation()}
               >

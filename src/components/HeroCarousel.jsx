@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Images, ArrowRight, Shield, FileText } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, Shield, FileText } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SLIDES = [
@@ -80,34 +80,59 @@ export default function HeroCarousel() {
 
               <div className="relative max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center">
                 <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
-                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
-                    <p className="text-accent font-medium text-sm tracking-widest uppercase mb-4">Autoridade Tributária de Moçambique</p>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    <p className="text-accent font-medium text-sm tracking-widest uppercase mb-4">
+                      Autoridade Tributária de Moçambique
+                    </p>
                     <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                       Todos Juntos Fazemos Moçambique
                     </h1>
                     <p className="text-white/70 text-lg max-w-lg mb-8 leading-relaxed">
-                      Arrecadar receitas, de forma justa e transparente para o financiamento de despesa pública e proteger a economia e a sociedade.
+                      Arrecadar receitas, de forma justa e transparente para o financiamento de
+                      despesa pública e proteger a economia e a sociedade.
                     </p>
                     <div className="flex flex-wrap gap-3">
-                      <a href="https://cas-portaldocontribuinte.at.gov.mz/cas/login?service=https%3A%2F%2Fportaldocontribuinte.at.gov.mz%2Fj_spring_cas_security_check" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-xl font-semibold text-sm hover:brightness-110 transition">
+                      <a
+                        href="https://cas-portaldocontribuinte.at.gov.mz/cas/login?service=https%3A%2F%2Fportaldocontribuinte.at.gov.mz%2Fj_spring_cas_security_check"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-xl font-semibold text-sm hover:brightness-110 transition"
+                      >
                         Portal do Contribuinte <ArrowRight className="w-4 h-4" />
                       </a>
-                      <a href="mailto:linhadocontribuinte@at.gov.mz" className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-6 py-3 rounded-xl font-semibold text-sm hover:bg-white/20 transition border border-white/20">
+                      <a
+                        href="mailto:linhadocontribuinte@at.gov.mz"
+                        className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-6 py-3 rounded-xl font-semibold text-sm hover:bg-white/20 transition border border-white/20"
+                      >
                         Fale Connosco
                       </a>
                     </div>
                   </motion.div>
 
-                  <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.4 }} className="hidden lg:grid grid-cols-2 gap-4">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="hidden lg:grid grid-cols-2 gap-4"
+                  >
                     <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
                       <Shield className="w-8 h-8 text-accent mb-3" />
                       <h3 className="font-semibold text-lg mb-1">Nossa Missão</h3>
-                      <p className="text-white/60 text-sm">Arrecadação justa e transparente de receitas.</p>
+                      <p className="text-white/60 text-sm">
+                        Arrecadação justa e transparente de receitas.
+                      </p>
                     </div>
-                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10 mt-8">
+                    {/* mt-8 removed — both cards now align on the same row */}
+                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
                       <FileText className="w-8 h-8 text-accent mb-3" />
                       <h3 className="font-semibold text-lg mb-1">Visão</h3>
-                      <p className="text-white/60 text-sm">Referência internacional na arrecadação de receitas.</p>
+                      <p className="text-white/60 text-sm">
+                        Referência internacional na arrecadação de receitas.
+                      </p>
                     </div>
                     <div className="col-span-2 bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
                       <p className="text-accent font-semibold text-sm mb-1">Valores</p>
@@ -126,7 +151,11 @@ export default function HeroCarousel() {
               transition={{ duration: 0.6 }}
               className="absolute inset-0"
             >
-              <img src={slide.img} alt={slide.title} className="w-full h-full object-cover" />
+              <img
+                src={slide.img}
+                alt={slide.title}
+                className="w-full h-full object-cover"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30" />
               <a
                 href={slide.url}
@@ -137,13 +166,15 @@ export default function HeroCarousel() {
                 <h2 className="text-white font-display text-xl sm:text-2xl lg:text-3xl font-bold underline underline-offset-4 decoration-accent group-hover:text-accent transition-colors">
                   {slide.title}
                 </h2>
-                <p className="text-white/75 text-sm sm:text-base mt-2 leading-relaxed">{slide.desc}</p>
+                <p className="text-white/75 text-sm sm:text-base mt-2 leading-relaxed">
+                  {slide.desc}
+                </p>
               </a>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Top bar: dots + gallery indicator */}
+        {/* Dot indicators */}
         <div className="absolute top-4 inset-x-0 flex items-center justify-center px-4 z-10">
           <div className="flex gap-2">
             {SLIDES.map((_, i) => (
@@ -158,7 +189,6 @@ export default function HeroCarousel() {
               />
             ))}
           </div>
-
         </div>
 
         {/* Progress bar */}
@@ -176,12 +206,14 @@ export default function HeroCarousel() {
         <button
           onClick={prev}
           className="absolute left-3 sm:left-5 bottom-6 z-10 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition backdrop-blur-sm border border-white/10"
+          aria-label="Slide anterior"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
         <button
           onClick={next}
           className="absolute right-3 sm:right-5 bottom-6 z-10 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition backdrop-blur-sm border border-white/10"
+          aria-label="Próximo slide"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
