@@ -3,7 +3,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home';
-import TaxaCambio from './pages/TaxaCambio'; // 🌟 Importado da página real criada
+import TaxaCambio from './pages/TaxaCambio';
+import Contacto from './pages/Contacto'; // 🌟 Agora importado da página real
 
 // 🚧 COMENTADO: import { AuthProvider, useAuth } from '@/lib/AuthContext';
 // 🚧 COMENTADO: import UserNotRegisteredError from "@/components/UserNotRegisteredError";
@@ -22,7 +23,6 @@ const UserNotRegisteredError = () => (
 
 // 📂 PLACEHOLDERS DAS PÁGINAS SECUNDÁRIAS (Ainda em falta no disco)
 const Ferramentas = () => <div className="p-12 text-center text-slate-500">Página de Calculadora Fiscal (Brevemente)</div>;
-const Contacto = () => <div className="p-12 text-center text-slate-500">Página de Contactos (Brevemente)</div>;
 const Noticias = () => <div className="p-12 text-center text-slate-500">Página de Notícias (Brevemente)</div>;
 const Galeria = () => <div className="p-12 text-center text-slate-500">Página de Galeria (Brevemente)</div>;
 
@@ -57,7 +57,7 @@ const AuthenticatedApp = () => {
       <Route path="/" element={<Home />} />
       <Route path="/ferramentas" element={<Ferramentas />} />
       <Route path="/taxa-de-cambio" element={<TaxaCambio />} />
-      <Route path="/contacto" element={<Contacto />} />
+      <Route path="/contacto" element={<Contacto />} /> {/* Rota Ativa */}
       <Route path="/noticias" element={<Noticias />} />
       <Route path="/galeria" element={<Galeria />} />
       <Route path="*" element={<PageNotFound />} />
