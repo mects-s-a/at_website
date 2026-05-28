@@ -2,13 +2,14 @@ import Navbar from "../components/Navbar";
 import HeroCarousel from "../components/HeroCarousel";
 import ServicesSection from "../components/ServicesSection";
 import TaxServicesBreakdown from "../components/TaxServicesBreakdown";
-
 import NewsSection from "../components/NewsSection";
 import ContactChannels from "../components/ContactChannels";
 import FiscalCalendar from "../components/FiscalCalendar";
 import ExchangeRates from "../components/ExchangeRates";
-
 import Footer from "../components/Footer";
+
+// 🚧 COMENTADO: import AIChatWidget from "../components/AIChatWidget";
+const AIChatWidget = () => null; // Placeholder seguro para evitar falha no build
 
 export default function Home() {
   return (
@@ -16,7 +17,6 @@ export default function Home() {
       <Navbar />
       <HeroCarousel />
       <ServicesSection />
-
       <NewsSection />
       <ContactChannels />
       <TaxServicesBreakdown />
@@ -30,8 +30,8 @@ export default function Home() {
         </div>
       </section>
 
-
       <Footer />
+      <AIChatWidget />
     </div>
   );
 }

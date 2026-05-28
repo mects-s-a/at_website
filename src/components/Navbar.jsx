@@ -54,7 +54,7 @@ const handleHashScroll = (e, href) => {
   if (href.startsWith("#")) {
     e.preventDefault();
     const targetId = href.substring(1);
-    const element = document.getElementById(targetId);
+    const element = targetId === "" ? document.body : document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
