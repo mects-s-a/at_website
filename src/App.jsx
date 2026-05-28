@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home';
+import TaxaCambio from './pages/TaxaCambio'; // 🌟 Importado da página real criada
 
 // 🚧 COMENTADO: import { AuthProvider, useAuth } from '@/lib/AuthContext';
 // 🚧 COMENTADO: import UserNotRegisteredError from "@/components/UserNotRegisteredError";
@@ -19,9 +20,8 @@ const UserNotRegisteredError = () => (
   <div className="p-12 text-center text-red-500">Utilizador não registado no sistema.</div>
 );
 
-// 📂 PLACEHOLDERS DAS PÁGINAS SECUNDÁRIAS
+// 📂 PLACEHOLDERS DAS PÁGINAS SECUNDÁRIAS (Ainda em falta no disco)
 const Ferramentas = () => <div className="p-12 text-center text-slate-500">Página de Calculadora Fiscal (Brevemente)</div>;
-const TaxaCambio = () => <div className="p-12 text-center text-slate-500">Página de Taxa de Câmbio (Brevemente)</div>;
 const Contacto = () => <div className="p-12 text-center text-slate-500">Página de Contactos (Brevemente)</div>;
 const Noticias = () => <div className="p-12 text-center text-slate-500">Página de Notícias (Brevemente)</div>;
 const Galeria = () => <div className="p-12 text-center text-slate-500">Página de Galeria (Brevemente)</div>;
