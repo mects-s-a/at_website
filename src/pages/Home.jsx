@@ -7,9 +7,7 @@ import ContactChannels from "../components/ContactChannels";
 import FiscalCalendar from "../components/FiscalCalendar";
 import ExchangeRates from "../components/ExchangeRates";
 import Footer from "../components/Footer";
-
-// 🚧 COMENTADO: import AIChatWidget from "../components/AIChatWidget";
-const AIChatWidget = () => null; // Placeholder seguro para evitar falha no build
+import AIChatWidget from "../components/AIChatWidget";
 
 export default function Home() {
   return (
