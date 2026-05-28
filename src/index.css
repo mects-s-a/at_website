@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
 
 @layer base {
   :root {
@@ -14,8 +14,12 @@
     --card-foreground: 215 30% 12%;
     --popover: 0 0% 100%;
     --popover-foreground: 215 30% 12%;
-    --primary: 215 60% 28%;
+    
+    /* 🌟 AJUSTE ADUANEIRO: Azul oficial extraído do logo da AT (#1B4FAB) */
+    --primary: 218 73% 38%;
     --primary-foreground: 0 0% 100%;
+    
+    /* Intactos conforme o teu ficheiro original */
     --secondary: 152 55% 45%;
     --secondary-foreground: 0 0% 100%;
     --muted: 210 15% 94%;
@@ -26,8 +30,11 @@
     --destructive-foreground: 0 0% 98%;
     --border: 210 15% 90%;
     --input: 210 15% 90%;
-    --ring: 215 60% 28%;
-    --chart-1: 215 60% 28%;
+    
+    /* Sincronização do Azul nos utilitários dependentes */
+    --ring: 218 73% 38%;
+    --chart-1: 218 73% 38%;
+    
     --chart-2: 152 55% 45%;
     --chart-3: 35 90% 55%;
     --chart-4: 280 65% 60%;
