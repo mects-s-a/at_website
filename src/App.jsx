@@ -3,13 +3,13 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 
 import Home from './pages/Home';
-import TaxaCambio from './pages/TaxaCambio'; 
+import TaxaCambio from './pages/TaxaCambio';
+import Ferramentas from './pages/Ferramentas';
+import Contacto from './pages/Contacto';
 import Noticias from './pages/Noticias';
 import Galeria from './pages/Galeria';
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 
-// 🔐 MOCKS TEMPORÁRIOS DE AUTENTICAÇÃO PRESERVADOS
+// 🔐 Auth mocks — replace when real auth is wired up
 const AuthProvider = ({ children }) => children;
 const useAuth = () => ({
   isLoadingAuth: false,
@@ -19,23 +19,8 @@ const useAuth = () => ({
 });
 
 const UserNotRegisteredError = () => (
-  <div className="p-12 text-center text-red-500 font-medium">Utilizador não registado no sistema.</div>
-);
-
-// 📂 PLACEHOLDERS ELEGANTES COM NAV/FOOTER PARA EVITAR QUEBRAS
-const Ferramentas = () => (
-  <div className="min-h-screen bg-background flex flex-col justify-between">
-    <Navbar />
-    <div className="p-24 text-center text-slate-500 font-medium">Página de Calculadora Fiscal (Brevemente)</div>
-    <Footer />
-  </div>
-);
-
-const Contacto = () => (
-  <div className="min-h-screen bg-background flex flex-col justify-between">
-    <Navbar />
-    <div className="p-24 text-center text-slate-500 font-medium">Página de Contactos e Suporte (Brevemente)</div>
-    <Footer />
+  <div className="p-12 text-center text-red-500 font-medium">
+    Utilizador não registado no sistema.
   </div>
 );
 
@@ -51,18 +36,14 @@ const AuthenticatedApp = () => {
   if (isLoadingPublicSettings || isLoadingAuth) {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-white">
-        <div className="w-8 h-8 border-4 border-slate-200 border-t-slate-800 rounded-full animate-spin"></div>
+        <div className="w-8 h-8 border-4 border-slate-200 border-t-slate-800 rounded-full animate-spin" />
       </div>
     );
   }
 
   if (authError) {
-    if (authError.type === 'user_not_registered') {
-      return <UserNotRegisteredError />;
-    } else if (authError.type === 'auth_required') {
-      navigateToLogin();
-      return null;
-    }
+    if (authError.type === 'user_not_registered') return <UserNotRegisteredError />;
+    if (authError.type === 'auth_required') { navigateToLogin(); return null; }
   }
 
   return (

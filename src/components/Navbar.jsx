@@ -42,8 +42,7 @@ const navItems = [
     href: "#",
     submenu: [
       { label: "Perguntas Frequentes", href: "https://at-mocambique.tributo670.workers.dev" },
-      { label: "Calendário Fiscal", href: "#" },
-      { label: "Taxa de Câmbio", href: "https://at-mocambique.tributo670.workers.dev/tabela-cambio.html" },
+      { label: "Calendário Fiscal", href: "#calendario" },
       { label: "Contactos", href: "/contacto" },
     ],
   },
@@ -65,9 +64,7 @@ const handleHashScroll = (e, href) => {
     } else {
       const targetId = href.substring(1);
       const element = targetId === "" ? document.body : document.getElementById(targetId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      if (element) element.scrollIntoView({ behavior: "smooth" });
     }
   }
 };
@@ -148,7 +145,9 @@ export default function Navbar() {
                     <Link
                       to={item.href}
                       className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
-                        activeDropdown === item.label ? "text-primary bg-primary/5" : "text-foreground/70 hover:text-primary hover:bg-muted"
+                        activeDropdown === item.label
+                          ? "text-primary bg-primary/5"
+                          : "text-foreground/70 hover:text-primary hover:bg-muted"
                       }`}
                     >
                       {item.label}
@@ -159,24 +158,40 @@ export default function Navbar() {
                       href={item.href}
                       onClick={(e) => handleHashScroll(e, item.href)}
                       className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
-                        activeDropdown === item.label ? "text-primary bg-primary/5" : "text-foreground/70 hover:text-primary hover:bg-muted"
+                        activeDropdown === item.label
+                          ? "text-primary bg-primary/5"
+                          : "text-foreground/70 hover:text-primary hover:bg-muted"
                       }`}
                     >
                       {item.label}
-                      {item.submenu && <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === item.label ? "rotate-180" : ""}`} />}
+                      {item.submenu && (
+                        <ChevronDown
+                          className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                            activeDropdown === item.label ? "rotate-180" : ""
+                          }`}
+                        />
+                      )}
                     </a>
                   )}
-                  {item.submenu && <DropdownMenu items={item.submenu} isOpen={activeDropdown === item.label} />}
+                  {item.submenu && (
+                    <DropdownMenu items={item.submenu} isOpen={activeDropdown === item.label} />
+                  )}
                 </div>
               );
             })}
           </nav>
 
           <div className="flex items-center gap-2">
-            <a href="tel:1266" className="hidden sm:flex items-center gap-1.5 text-xs font-medium text-primary bg-primary/5 px-3 py-1.5 rounded-full">
+            <a
+              href="tel:1266"
+              className="hidden sm:flex items-center gap-1.5 text-xs font-medium text-primary bg-primary/5 px-3 py-1.5 rounded-full"
+            >
               <Phone className="w-3.5 h-3.5" /> 1266
             </a>
-            <button onClick={() => setOpen(!open)} className="lg:hidden p-2 rounded-lg hover:bg-muted">
+            <button
+              onClick={() => setOpen(!open)}
+              className="lg:hidden p-2 rounded-lg hover:bg-muted"
+            >
               {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
@@ -192,33 +207,68 @@ export default function Navbar() {
               <div key={item.label}>
                 <div className="flex items-center justify-between">
                   {isInternalRoute ? (
-                    <Link to={item.href} onClick={() => setOpen(false)} className="flex-1 px-3 py-2.5 text-sm font-medium text-foreground/80 hover:bg-muted rounded-lg">
+                    <Link
+                      to={item.href}
+                      onClick={() => setOpen(false)}
+                      className="flex-1 px-3 py-2.5 text-sm font-medium text-foreground/80 hover:bg-muted rounded-lg"
+                    >
                       {item.label}
                     </Link>
                   ) : (
-                    <a href={item.href} onClick={(e) => { handleHashScroll(e, item.href); if (!item.submenu) setOpen(false); }} className="flex-1 px-3 py-2.5 text-sm font-medium text-foreground/80 hover:bg-muted rounded-lg">
+                    <a
+                      href={item.href}
+                      onClick={(e) => {
+                        handleHashScroll(e, item.href);
+                        if (!item.submenu) setOpen(false);
+                      }}
+                      className="flex-1 px-3 py-2.5 text-sm font-medium text-foreground/80 hover:bg-muted rounded-lg"
+                    >
                       {item.label}
                     </a>
                   )}
                   {item.submenu && (
-                    <button onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)} className="p-2 rounded-lg hover:bg-muted">
-                      <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${mobileExpanded === item.label ? "rotate-180" : ""}`} />
+                    <button
+                      onClick={() =>
+                        setMobileExpanded(mobileExpanded === item.label ? null : item.label)
+                      }
+                      className="p-2 rounded-lg hover:bg-muted"
+                    >
+                      <ChevronDown
+                        className={`w-4 h-4 text-muted-foreground transition-transform ${
+                          mobileExpanded === item.label ? "rotate-180" : ""
+                        }`}
+                      />
                     </button>
                   )}
                 </div>
                 {item.submenu && mobileExpanded === item.label && (
                   <div className="ml-4 mt-1 space-y-0.5 border-l-2 border-primary/20 pl-3">
-                    {item.submenu.map((sub) => {
-                      return sub.href.startsWith("/") ? (
-                        <Link key={sub.label} to={sub.href} onClick={() => setOpen(false)} className="block px-3 py-2 text-xs text-muted-foreground hover:text-primary hover:bg-muted rounded-lg">
+                    {item.submenu.map((sub) =>
+                      sub.href.startsWith("/") ? (
+                        <Link
+                          key={sub.label}
+                          to={sub.href}
+                          onClick={() => setOpen(false)}
+                          className="block px-3 py-2 text-xs text-muted-foreground hover:text-primary hover:bg-muted rounded-lg"
+                        >
                           {sub.label}
                         </Link>
                       ) : (
-                        <a key={sub.label} href={sub.href} target={sub.href.startsWith("http") ? "_blank" : undefined} rel={sub.href.startsWith("http") ? "noopener noreferrer" : undefined} onClick={(e) => { handleHashScroll(e, sub.href); setOpen(false); }} className="block px-3 py-2 text-xs text-muted-foreground hover:text-primary hover:bg-muted rounded-lg">
+                        <a
+                          key={sub.label}
+                          href={sub.href}
+                          target={sub.href.startsWith("http") ? "_blank" : undefined}
+                          rel={sub.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                          onClick={(e) => {
+                            handleHashScroll(e, sub.href);
+                            setOpen(false);
+                          }}
+                          className="block px-3 py-2 text-xs text-muted-foreground hover:text-primary hover:bg-muted rounded-lg"
+                        >
                           {sub.label}
                         </a>
-                      );
-                    })}
+                      )
+                    )}
                   </div>
                 )}
               </div>

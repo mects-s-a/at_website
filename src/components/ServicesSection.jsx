@@ -14,14 +14,21 @@ export default function ServicesSection() {
   return (
     <section id="servicos" className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6">
       <div className="text-center mb-14">
-        <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-2">Em Destaque</p>
         <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">Serviços</h2>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {services.map((s, i) => (
-          <motion.a key={s.title} href={s.url} target="_blank" rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
-            className="group flex items-start gap-4 p-6 rounded-2xl bg-card border border-border hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
+          <motion.a
+            key={s.title}
+            href={s.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.07 }}
+            className="group flex items-start gap-4 p-6 rounded-2xl bg-card border border-border hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300"
+          >
             <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
               <s.icon className="w-5 h-5 text-accent group-hover:text-white transition-colors duration-300" />
             </div>

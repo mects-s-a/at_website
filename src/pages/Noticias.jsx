@@ -24,7 +24,9 @@ export default function Noticias() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-1">Media</p>
           <h1 className="font-display text-3xl sm:text-4xl font-bold">Notícias</h1>
-          <p className="text-white/60 mt-2">Últimas actualidades da Autoridade Tributária de Moçambique</p>
+          <p className="text-white/60 mt-2">
+            Últimas actualidades da Autoridade Tributária de Moçambique
+          </p>
         </div>
       </div>
 
@@ -67,9 +69,10 @@ export default function Noticias() {
                     alt={n.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
+                  {/* Star only — no "Destaque" label */}
                   {n.featured && (
-                    <span className="absolute top-3 left-3 flex items-center gap-1 bg-yellow-400 text-yellow-900 text-xs font-bold px-2.5 py-1 rounded-full shadow">
-                      <Star className="w-3 h-3 fill-current" /> Destaque
+                    <span className="absolute top-3 left-3 flex items-center justify-center w-7 h-7 bg-yellow-400 rounded-full shadow">
+                      <Star className="w-3.5 h-3.5 text-yellow-900 fill-current" />
                     </span>
                   )}
                   <span className="absolute top-3 right-3 bg-primary/90 text-primary-foreground text-xs font-medium px-2.5 py-1 rounded-full">
