@@ -1,15 +1,14 @@
-import Navbar from "../components/Navbar";
-import HeroCarousel from "../components/HeroCarousel";
-import ServicesSection from "../components/ServicesSection";
-import TaxServicesBreakdown from "../components/TaxServicesBreakdown";
-import NewsSection from "../components/NewsSection";
-import ContactChannels from "../components/ContactChannels";
-import FiscalCalendar from "../components/FiscalCalendar";
-import ExchangeRates from "../components/ExchangeRates";
-import Footer from "../components/Footer";
+import Navbar from "../components/layout/Navbar";
+import HeroCarousel from "../components/sections/HeroCarousel";
+import ServicesSection from "../components/sections/ServicesSection";
+import ContactChannels from "../components/features/ai-chat/ContactChannels";
+import FiscalCalendar from "../components/features/fiscal-calendar/FiscalCalendar";
+import ExchangeRates from "../components/features/exchange-rates/ExchangeRates";
+import Footer from "../components/layout/Footer";
 
-// 🚧 COMENTADO: import AIChatWidget from "../components/AIChatWidget";
-const AIChatWidget = () => null; // Placeholder seguro para evitar falha no build
+// FIX: Pointing to the new modular feature folders
+import TaxServicesBreakdown from "../components/features/tax/TaxServicesBreakdown";
+import NewsSection from "../components/features/news/NewsSection";
 
 export default function Home() {
   return (
@@ -21,7 +20,8 @@ export default function Home() {
       <ContactChannels />
       <TaxServicesBreakdown />
 
-      <section className="py-20 sm:py-28 bg-muted/50">
+      {/* id="calendario" lets the nav anchor "#calendario" scroll here directly */}
+      <section id="calendario" className="py-20 sm:py-28 bg-muted/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-6">
             <FiscalCalendar />
@@ -31,7 +31,6 @@ export default function Home() {
       </section>
 
       <Footer />
-      <AIChatWidget />
     </div>
   );
 }

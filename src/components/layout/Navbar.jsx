@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom"; // 🌟 Importado para navegação SPA
+import { Link } from "react-router-dom";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 
 const navItems = [
@@ -30,14 +30,20 @@ const navItems = [
     ],
   },
   {
-    label: "Informações",
-    href: "#noticias",
+    label: "Média",
+    href: "/noticias",
     submenu: [
-      { label: "Notícias", href: "#noticias" },
+      { label: "Notícias e Imprensa", href: "/noticias" },
+      { label: "Galeria de Eventos", href: "/galeria" },
+    ],
+  },
+  {
+    label: "Informações",
+    href: "#",
+    submenu: [
       { label: "Perguntas Frequentes", href: "https://at-mocambique.tributo670.workers.dev" },
-      { label: "Calendário Fiscal", href: "#" },
-      { label: "Taxa de Câmbio", href: "https://at-mocambique.tributo670.workers.dev/tabela-cambio.html" },
-      { label: "Contactos", href: "/contacto" }, // 🌟 CORRIGIDO: Aponta para a nova rota real
+      { label: "Calendário Fiscal", href: "#calendario" },
+      { label: "Contactos", href: "/contacto" },
     ],
   },
   {
@@ -50,18 +56,15 @@ const navItems = [
   },
 ];
 
-// Função auxiliar inteligente para scroll ou redirecionamento caso esteja fora da Home
 const handleHashScroll = (e, href) => {
   if (href.startsWith("#")) {
     e.preventDefault();
     if (window.location.pathname !== "/") {
-      window.location.href = "/" + href; // Força ida para a Home com a âncora correspondente
+      window.location.href = "/" + href;
     } else {
       const targetId = href.substring(1);
       const element = targetId === "" ? document.body : document.getElementById(targetId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      if (element) element.scrollIntoView({ behavior: "smooth" });
     }
   }
 };
@@ -70,14 +73,11 @@ function DropdownMenu({ items, isOpen }) {
   return (
     <div
       className={`absolute top-full left-0 mt-1 w-64 bg-white rounded-xl shadow-xl border border-border overflow-hidden transition-all duration-200 ${
-        isOpen
-          ? "opacity-100 translate-y-0 pointer-events-auto"
-          : "opacity-0 -translate-y-2 pointer-events-none"
+        isOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"
       }`}
     >
       {items.map((item) => {
         const isInternalRoute = item.href.startsWith("/");
-        
         return isInternalRoute ? (
           <Link
             key={item.label}
@@ -123,21 +123,17 @@ export default function Navbar() {
     <header ref={navRef} className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 sm:h-20">
-
-          {/* Logo — Alterado para Link para evitar refresh desnecessário */}
           <Link to="/" className="flex items-center gap-2 shrink-0">
             <img
               src="https://at-mocambique.tributo670.workers.dev/Imagens/logo-at.png"
-              alt="Autoridade Tributária de Moçambique — Início"
+              alt="Autoridade Tributária de Moçambique"
               className="h-12 sm:h-14 w-auto object-contain"
             />
           </Link>
 
-          {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-0.5">
             {navItems.map((item) => {
               const isInternalRoute = item.href.startsWith("/");
-
               return (
                 <div
                   key={item.label}
@@ -185,7 +181,6 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Right side */}
           <div className="flex items-center gap-2">
             <a
               href="tel:1266"
@@ -203,12 +198,11 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile nav */}
+      {/* MOBILE MENU */}
       {open && (
         <div className="lg:hidden border-t border-border bg-white px-4 py-3 space-y-1 max-h-[80vh] overflow-y-auto">
           {navItems.map((item) => {
             const isInternalRoute = item.href.startsWith("/");
-
             return (
               <div key={item.label}>
                 <div className="flex items-center justify-between">
@@ -232,7 +226,6 @@ export default function Navbar() {
                       {item.label}
                     </a>
                   )}
-                  
                   {item.submenu && (
                     <button
                       onClick={() =>
@@ -248,13 +241,10 @@ export default function Navbar() {
                     </button>
                   )}
                 </div>
-                
                 {item.submenu && mobileExpanded === item.label && (
                   <div className="ml-4 mt-1 space-y-0.5 border-l-2 border-primary/20 pl-3">
-                    {item.submenu.map((sub) => {
-                      const isSubInternal = sub.href.startsWith("/");
-
-                      return isSubInternal ? (
+                    {item.submenu.map((sub) =>
+                      sub.href.startsWith("/") ? (
                         <Link
                           key={sub.label}
                           to={sub.href}
@@ -277,8 +267,8 @@ export default function Navbar() {
                         >
                           {sub.label}
                         </a>
-                      );
-                    })}
+                      )
+                    )}
                   </div>
                 )}
               </div>

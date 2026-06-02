@@ -1,5 +1,5 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 
 const rates = [
   { code: "USD", name: "Dólar Americano", country: "Estados Unidos da América", rate: 64.65, iso: "us" },
@@ -11,7 +11,7 @@ const rates = [
   { code: "SZL", name: "Lilangeni", country: "Eswatini", rate: 3.72, iso: "sz" },
   { code: "CHF", name: "Franco Suíço", country: "Suíça", rate: 82.17, iso: "ch" },
   { code: "JPY", name: "Yen", country: "Japão", rate: 0.41, iso: "jp" },
-  { code: "AED", name: "Dirham Aed", country: "Emirados Árabes Unidos", rate: 17.60, iso: "ae" },
+  { code: "AED", name: "Dirham Aed", country: "Emirados Árabes Unidos", rate: 17.6, iso: "ae" },
   { code: "AUD", name: "Dólar Australiano", country: "Austrália", rate: 42.53, iso: "au" },
   { code: "BWP", name: "Pula", country: "Botswana", rate: 4.6, iso: "bw" },
   { code: "NZD", name: "Dólar Nova Zelândia", country: "Nova Zelândia", rate: 37.5, iso: "nz" },
