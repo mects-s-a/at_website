@@ -1,18 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import { X, ChevronLeft, ChevronRight, Images } from "lucide-react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import AIChatWidget from "../components/AIChatWidget";
+import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 import { albums } from "../data/gallery";
 
 function LightBox({ album, startIndex, onClose }) {
   const [idx, setIdx] = useState(startIndex);
   const photo = album.photos[idx];
 
+  const handlePrev = useCallback(() => {
+    setIdx((i) => (i - 1 + album.photos.length) % album.photos.length);
+  }, [album.photos.length]);
+
+  const handleNext = useCallback(() => {
+    setIdx((i) => (i + 1) % album.photos.length);
+  }, [album.photos.length]);
+
+  // Captura eventos de teclado para acessibilidade (A11y)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose, handlePrev, handleNext]);
+
   return (
     <div
       className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
     >
       <div
         className="relative max-w-4xl w-full"
@@ -28,17 +49,15 @@ function LightBox({ album, startIndex, onClose }) {
 
         <img
           src={photo.url}
-          alt={photo.caption}
+          alt={photo.caption || "Imagem ampliada"}
           className="w-full max-h-[75vh] object-contain rounded-xl"
         />
         <p className="text-white/60 text-sm text-center mt-3">{photo.caption}</p>
 
-        {/* Prev */}
+        {/* Botão Anterior */}
         <div className="absolute top-1/2 -translate-y-1/2 left-0 -ml-12">
           <button
-            onClick={() =>
-              setIdx((i) => (i - 1 + album.photos.length) % album.photos.length)
-            }
+            onClick={handlePrev}
             className="text-white/70 hover:text-white p-2 transition-colors"
             aria-label="Foto anterior"
           >
@@ -46,10 +65,10 @@ function LightBox({ album, startIndex, onClose }) {
           </button>
         </div>
 
-        {/* Next */}
+        {/* Botão Próximo */}
         <div className="absolute top-1/2 -translate-y-1/2 right-0 -mr-12">
           <button
-            onClick={() => setIdx((i) => (i + 1) % album.photos.length)}
+            onClick={handleNext}
             className="text-white/70 hover:text-white p-2 transition-colors"
             aria-label="Próxima foto"
           >
@@ -64,6 +83,20 @@ function LightBox({ album, startIndex, onClose }) {
     </div>
   );
 }
+
+LightBox.propTypes = {
+  album: PropTypes.shape({
+    photos: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+        url: PropTypes.string.isRequired,
+        caption: PropTypes.string,
+      })
+    ).isRequired,
+  }).isRequired,
+  startIndex: PropTypes.number.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 function AlbumDetail({ album, onBack }) {
   const [lightbox, setLightbox] = useState(null);
@@ -96,7 +129,7 @@ function AlbumDetail({ album, onBack }) {
           >
             <img
               src={photo.url}
-              alt={photo.caption}
+              alt={photo.caption || "Imagem do álbum"}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </button>
@@ -110,6 +143,21 @@ function AlbumDetail({ album, onBack }) {
   );
 }
 
+AlbumDetail.propTypes = {
+  album: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    photos: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+        url: PropTypes.string.isRequired,
+        caption: PropTypes.string,
+      })
+    ).isRequired,
+  }).isRequired,
+  onBack: PropTypes.func.isRequired,
+};
+
 export default function Galeria() {
   const [selectedAlbum, setSelectedAlbum] = useState(null);
 
@@ -117,7 +165,7 @@ export default function Galeria() {
     <div className="min-h-screen bg-background font-inter">
       <Navbar />
 
-      {/* Page header */}
+      {/* Cabeçalho da Página */}
       <div className="py-10 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-1">Media</p>
@@ -135,11 +183,11 @@ export default function Galeria() {
               <button
                 key={album.id}
                 onClick={() => setSelectedAlbum(album)}
-                className="group text-left bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300"
+                className="group text-left bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300 flex flex-col w-full"
               >
-                <div className="aspect-video overflow-hidden relative">
+                <div className="aspect-video overflow-hidden relative w-full">
                   <img
-                    src={album.cover}
+                    src={album.cover || album.coverImg}
                     alt={album.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -148,7 +196,7 @@ export default function Galeria() {
                     <Images className="w-3.5 h-3.5" /> {album.photos.length} fotos
                   </div>
                 </div>
-                <div className="p-4">
+                <div className="p-4 flex-1 flex flex-col justify-between">
                   <p className="text-xs text-muted-foreground mb-1">
                     {new Date(album.date).toLocaleDateString("pt-MZ", {
                       day: "numeric",
@@ -167,7 +215,6 @@ export default function Galeria() {
       </div>
 
       <Footer />
-      <AIChatWidget />
     </div>
   );
 }

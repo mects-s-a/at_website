@@ -2,12 +2,16 @@ import { Toaster } from "@/components/ui/toaster";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 
+// Page Component Imports
 import Home from './pages/Home';
 import TaxaCambio from './pages/TaxaCambio';
 import Ferramentas from './pages/Ferramentas';
 import Contacto from './pages/Contacto';
 import Noticias from './pages/Noticias';
 import Galeria from './pages/Galeria';
+
+// Global UI Widget Imports
+import AIChatWidget from './components/features/ai-chat/AIChatWidget';
 
 // 🔐 Auth mocks — replace when real auth is wired up
 const AuthProvider = ({ children }) => children;
@@ -82,7 +86,11 @@ export default function App() {
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <Router>
+          {/* Main layout contents */}
           <AuthenticatedApp />
+          
+          {/* Persistent global overlays */}
+          <AIChatWidget />
           <Toaster />
         </Router>
       </QueryClientProvider>

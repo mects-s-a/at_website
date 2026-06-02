@@ -16,6 +16,7 @@ const SLIDES = [
     title: "NUIT é Mahala",
     desc: "Registe-se gratuitamente e obtenha o seu Número Único de Identificação Tributária.",
     url: "https://nuit.at.gov.mz/nuit/bootstrap/theme/work/Impressao_Carta.aspx",
+    bgColor: "bg-[#056036]", // Verde correspondente ao banner
   },
   {
     id: "digital",
@@ -25,6 +26,7 @@ const SLIDES = [
     title: "Serviços Digitais Modernos",
     desc: "Aceda aos nossos serviços online de forma rápida, segura e conveniente.",
     url: "https://cas-portaldocontribuinte.at.gov.mz/cas/login?service=https%3A%2F%2Fportaldocontribuinte.at.gov.mz%2Fj_spring_cas_security_check",
+    bgColor: "bg-[#004767]", // Azul escuro correspondente ao banner
   },
   {
     id: "moz",
@@ -34,6 +36,7 @@ const SLIDES = [
     title: "Todos Juntos Fazemos Moçambique",
     desc: "A Autoridade Tributária ao serviço do desenvolvimento nacional.",
     url: "https://at-mocambique.tributo670.workers.dev",
+    bgColor: "bg-[#045d33]", // Verde escuro correspondente ao banner
   },
   {
     id: "anos",
@@ -43,6 +46,7 @@ const SLIDES = [
     title: "20 Anos de Excelência",
     desc: "Duas décadas de comprometimento com a arrecadação justa e transparente de receitas.",
     url: "https://at-mocambique.tributo670.workers.dev",
+    bgColor: "bg-[#161616]", // Cor escura para a foto institucional de fundo
   },
 ];
 
@@ -60,8 +64,8 @@ export default function HeroCarousel() {
   const slide = SLIDES[active];
 
   return (
-    <section className="relative overflow-hidden">
-      <div className="relative h-[520px] sm:h-[580px] lg:h-[640px]">
+    <section className="relative overflow-hidden bg-black">
+      <div className="relative h-[320px] sm:h-[450px] md:h-[520px] lg:h-[580px] xl:h-[640px] transition-all duration-300">
         <AnimatePresence mode="wait">
           {slide.type === "hero" ? (
             <motion.div
@@ -88,7 +92,7 @@ export default function HeroCarousel() {
                     <p className="text-accent font-medium text-sm tracking-widest uppercase mb-4">
                       Autoridade Tributária de Moçambique
                     </p>
-                    <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                    <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                       Todos Juntos Fazemos Moçambique
                     </h1>
                     <p className="text-white/70 text-lg max-w-lg mb-8 leading-relaxed">
@@ -126,7 +130,6 @@ export default function HeroCarousel() {
                         Arrecadação justa e transparente de receitas.
                       </p>
                     </div>
-                    {/* mt-8 removed — both cards now align on the same row */}
                     <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
                       <FileText className="w-8 h-8 text-accent mb-3" />
                       <h3 className="font-semibold text-lg mb-1">Visão</h3>
@@ -149,26 +152,26 @@ export default function HeroCarousel() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.6 }}
-              className="absolute inset-0"
+              className={`absolute inset-0 flex items-center justify-center ${slide.bgColor}`}
             >
-              <img
-                src={slide.img}
-                alt={slide.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30" />
               <a
                 href={slide.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute bottom-16 left-6 sm:left-12 max-w-md group cursor-pointer"
+                className="w-full h-full block relative"
               >
-                <h2 className="text-white font-display text-xl sm:text-2xl lg:text-3xl font-bold underline underline-offset-4 decoration-accent group-hover:text-accent transition-colors">
-                  {slide.title}
-                </h2>
-                <p className="text-white/75 text-sm sm:text-base mt-2 leading-relaxed">
-                  {slide.desc}
-                </p>
+                <img
+                  src={slide.img}
+                  alt={slide.title}
+                  className="w-full h-full object-contain mx-auto"
+                />
+                
+                {/* Texto sobreposto ocultado visualmente, mantendo apenas o leitor de tela (sr-only), 
+                    já que os banners originais da AT já possuem os textos desenhados na imagem */}
+                <span className="sr-only">
+                  <h2>{slide.title}</h2>
+                  <p>{slide.desc}</p>
+                </span>
               </a>
             </motion.div>
           )}
@@ -176,7 +179,7 @@ export default function HeroCarousel() {
 
         {/* Dot indicators */}
         <div className="absolute top-4 inset-x-0 flex items-center justify-center px-4 z-10">
-          <div className="flex gap-2">
+          <div className="flex gap-2 bg-black/20 backdrop-blur-sm px-3 py-1.5 rounded-full">
             {SLIDES.map((_, i) => (
               <button
                 key={i}
