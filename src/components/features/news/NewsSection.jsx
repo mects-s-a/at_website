@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { featuredArticles } from "../data/news";
+// Path updated to reference the true structural location shown in Screenshot (869).jpg
+import { featuredArticles } from "@/data/news";
 
 export default function NewsSection() {
   return (
     <section id="noticias" className="py-20 sm:py-28 bg-muted/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-
-        {/* Header with "Ver Mais" link */}
         <div className="flex items-end justify-between mb-10">
           <div>
             <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-2">
@@ -25,7 +24,6 @@ export default function NewsSection() {
           </Link>
         </div>
 
-        {/* Cards */}
         <div className="grid md:grid-cols-3 gap-6">
           {featuredArticles.map((n) => (
             <Link

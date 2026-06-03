@@ -49,7 +49,6 @@ export default function TaxServicesBreakdown() {
           </p>
         </div>
 
-        {/* Mantida a distribuição compacta em 5 colunas para Desktop */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {services.map((s) => (
             <div 

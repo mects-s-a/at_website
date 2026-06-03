@@ -1,13 +1,14 @@
-import Navbar from "../components/Navbar";
-import HeroCarousel from "../components/HeroCarousel";
-import ServicesSection from "../components/ServicesSection";
-import TaxServicesBreakdown from "../components/TaxServicesBreakdown";
-import NewsSection from "../components/NewsSection";
-import ContactChannels from "../components/ContactChannels";
-import FiscalCalendar from "../components/FiscalCalendar";
-import ExchangeRates from "../components/ExchangeRates";
-import Footer from "../components/Footer";
-import AIChatWidget from "../components/AIChatWidget";
+import Navbar from "../components/layout/Navbar";
+import HeroCarousel from "../components/sections/HeroCarousel";
+import ServicesSection from "../components/sections/ServicesSection";
+import ContactChannels from "../components/features/ai-chat/ContactChannels";
+import FiscalCalendar from "../components/features/fiscal-calendar/FiscalCalendar";
+import ExchangeRates from "../components/features/exchange-rates/ExchangeRates";
+import Footer from "../components/layout/Footer";
+
+// FIX: Pointing to the new modular feature folders
+import TaxServicesBreakdown from "../components/features/tax/TaxServicesBreakdown";
+import NewsSection from "../components/features/news/NewsSection";
 
 export default function Home() {
   return (
@@ -30,7 +31,6 @@ export default function Home() {
       </section>
 
       <Footer />
-      <AIChatWidget />
     </div>
   );
 }

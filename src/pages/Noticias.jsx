@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { ArrowRight, Star } from "lucide-react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import AIChatWidget from "../components/AIChatWidget";
+import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 import { articles } from "../data/news";
 
 const categories = ["Todas", ...Array.from(new Set(articles.map((a) => a.category)))];
@@ -69,7 +68,6 @@ export default function Noticias() {
                     alt={n.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  {/* Star only — no "Destaque" label */}
                   {n.featured && (
                     <span className="absolute top-3 left-3 flex items-center justify-center w-7 h-7 bg-yellow-400 rounded-full shadow">
                       <Star className="w-3.5 h-3.5 text-yellow-900 fill-current" />
@@ -103,7 +101,6 @@ export default function Noticias() {
       </div>
 
       <Footer />
-      <AIChatWidget />
     </div>
   );
 }
