@@ -1,4 +1,6 @@
 import { MapPin, Phone, Mail } from "lucide-react";
+// 1. Importa corretamente a imagem a partir da pasta utils
+import logoAT from "../../utils/Logo-da-AT.png"; 
 
 export default function Footer() {
   return (
@@ -7,7 +9,12 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-bold text-sm">AT</div>
+              {/* 2. Utiliza a variável importada diretamente no src (sem aspas) */}
+              <img 
+                src={logoAT} 
+                alt="Logótipo AT" 
+                className="w-12 h-12 object-contain mix-blend-screen"
+              />
               <div>
                 <p className="font-display font-bold">Autoridade Tributária</p>
                 <p className="text-xs text-white/60">de Moçambique</p>
