@@ -16,7 +16,6 @@ const SLIDES = [
     title: "NUIT é Mahala",
     desc: "Registe-se gratuitamente e obtenha o seu Número Único de Identificação Tributária.",
     url: "https://nuit.at.gov.mz/nuit/bootstrap/theme/work/Impressao_Carta.aspx",
-    bgColor: "bg-[#004767]",
   },
   {
     id: "digital",
@@ -26,7 +25,6 @@ const SLIDES = [
     title: "Serviços Digitais Modernos",
     desc: "Aceda aos nossos serviços online de forma rápida, segura e conveniente.",
     url: "https://cas-portaldocontribuinte.at.gov.mz/cas/login?service=https%3A%2F%2Fportaldocontribuinte.at.gov.mz%2Fj_spring_cas_security_check",
-    bgColor: "bg-[#004767]",
   },
   {
     id: "moz",
@@ -36,19 +34,34 @@ const SLIDES = [
     title: "Todos Juntos Fazemos Moçambique",
     desc: "A Autoridade Tributária ao serviço do desenvolvimento nacional.",
     url: "https://at-mocambique.tributo670.workers.dev",
-    bgColor: "bg-[#045d33]",
+    
   },
   {
-    id: "anos",
+    id: "trabalho",
     duration: 5000,
     type: "image",
-    img: "https://at-mocambique.tributo670.workers.dev/Imagens/20%20Anos%20da%20AT%20830X333.png",
-    title: "20 Anos de Excelência",
-    desc: "Duas décadas de comprometimento com a arrecadação justa e transparente de receitas.",
-    url: "https://at-mocambique.tributo670.workers.dev",
+    img: "/src/components/Media/Content/PAT TIMAR web_050744.png",
+    title: "Atendimento Humanizado e Rigor Fiscal",
+    desc: "Atendimento Humanizado e Controlo Eficaz das Receitas no Centro das Atenções do Presidente da AT.",
+    // url: "https://at-mocambique.tributo670.workers.dev",
+    bgColor: "bg-[#161616]",
+  },
+  {
+    id: "crianca",
+    duration: 5000,
+    type: "image",
+    img: "/src/components/Media/Dia da Criança - AT/PAT 1 de Junho_094712.png",
+    title: "Dia Internacional da Criança",
+    desc: "Presidente da AT Partilha o 'ABC dos Impostos' com Petizes da Escola 16 de Junho.",
+    // url: "https://at-mocambique.tributo670.workers.dev",
     bgColor: "bg-[#161616]",
   },
 ];
+
+
+
+
+
 
 export default function HeroCarousel() {
   const [active, setActive] = useState(0);
