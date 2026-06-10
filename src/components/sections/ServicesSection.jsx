@@ -11,9 +11,11 @@ const services = [
 ];
 
 export default function ServicesSection() {
+  // REDUZIDO: de py-20 sm:py-28 para py-12 sm:py-16
+  // REDUZIDO: mb-14 para mb-8
   return (
-    <section id="servicos" className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6">
-      <div className="text-center mb-14">
+    <section id="servicos" className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="text-center mb-8">
         <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">Serviços</h2>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
