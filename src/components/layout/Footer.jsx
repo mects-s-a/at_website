@@ -44,11 +44,55 @@ export default function Footer() {
               <li><a href="https://denuncias.at.gov.mz/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Denúncias</a></li>
             </ul>
           </div>
-          <div>
-            <h4 className="font-semibold mb-4">Contacto Rápido</h4>
-            <div className="bg-white/10 rounded-xl p-4 text-center">
-              <p className="text-3xl font-bold text-accent mb-1">1266</p>
-              <p className="text-sm text-white/70">Call Center</p>
+          <div className="space-y-6">
+            <div>
+              <h4 className="font-semibold mb-4">Contacto Rápido</h4>
+              <div className="bg-white/10 rounded-xl p-4 text-center">
+                <p className="text-3xl font-bold text-accent mb-1">1266</p>
+                <p className="text-sm text-white/70">Call Center</p>
+              </div>
+            </div>
+
+            {/* Secção de Redes Sociais com efeitos de transição dinâmicos */}
+            <div className="space-y-2">
+              <h4 className="font-semibold text-sm text-white/90">Siga-nos nas Redes</h4>
+              <div className="grid grid-cols-2 gap-2">
+                
+                {/* Botão Facebook */}
+                <a 
+                  href="https://www.facebook.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 bg-white text-black p-2 rounded-xl transition-all duration-300 hover:bg-[#1877F2] hover:text-white group"
+                >
+                  <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm border border-gray-100">
+                    <img 
+                      src="https://cdn-icons-png.flaticon.com/512/124/124010.png" 
+                      alt="Facebook" 
+                      className="w-5 h-5 object-contain"
+                    />
+                  </div>
+                  <span className="text-xs font-bold transition-colors duration-300">Facebook</span>
+                </a>
+
+                {/* Botão WhatsApp */}
+                <a 
+                  href="https://wa.me" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 bg-white text-black p-2 rounded-xl transition-all duration-300 hover:bg-[#25D366] hover:text-white group"
+                >
+                  <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm border border-gray-100">
+                    <img 
+                      src="https://cdn-icons-png.flaticon.com/512/733/733585.png" 
+                      alt="WhatsApp" 
+                      className="w-5 h-5 object-contain"
+                    />
+                  </div>
+                  <span className="text-xs font-bold transition-colors duration-300">WhatsApp</span>
+                </a>
+
+              </div>
             </div>
           </div>
         </div>

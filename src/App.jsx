@@ -9,6 +9,8 @@ import Ferramentas from './pages/Ferramentas';
 import Contacto from './pages/Contacto';
 import Noticias from './pages/Noticias';
 import Galeria from './pages/Galeria';
+// 🆕 Importação da nova página SobreAT
+import SobreAT from './pages/Seg/SobreAT'; 
 
 // Global UI Widget Imports
 import AIChatWidget from './components/features/ai-chat/AIChatWidget';
@@ -58,6 +60,10 @@ const AuthenticatedApp = () => {
       <Route path="/contacto" element={<Contacto />} />
       <Route path="/noticias" element={<Noticias />} />
       <Route path="/galeria" element={<Galeria />} />
+      
+      {/* 🆕 Nova rota para a página SobreAT */}
+      <Route path="/sobre-at" element={<SobreAT />} /> 
+      
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

@@ -1,13 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 const navItems = [
   {
     label: "Institucional",
     href: "#institucional",
     submenu: [
-      { label: "Sobre a AT", href: "#institucional" },
+      // 🔄 Mude de "#institucional" para "/sobre-at"
+      { label: "Sobre a AT", href: "/sobre-at" }, 
       { label: "Organograma", href: "https://at-mocambique.tributo670.workers.dev" },
       { label: "Directório", href: "https://at-mocambique.tributo670.workers.dev" },
       { label: "Relatórios e Publicações", href: "https://at-mocambique.tributo670.workers.dev" },
@@ -17,6 +18,10 @@ const navItems = [
   {
     label: "Serviços",
     href: "#servicos",
+    submenu: [
+      { label: "Serviços Aduaneiros", href: "/sobre-at" }, 
+      { label: "Serviços Tributários", href: "https://at-mocambique.tributo670.workers.dev" },
+    ],
   },
   {
     label: "Legislação",
@@ -43,7 +48,6 @@ const navItems = [
     submenu: [
       { label: "Perguntas Frequentes", href: "https://at-mocambique.tributo670.workers.dev" },
       { label: "Calendário Fiscal", href: "#calendario" },
-      { label: "Contactos", href: "/contacto" },
     ],
   },
   {
@@ -53,6 +57,10 @@ const navItems = [
       { label: "Calculadora Fiscal", href: "/ferramentas" },
       { label: "Taxa de Câmbio", href: "/taxa-de-cambio" },
     ],
+  },
+  {
+    label: "Contactos",
+    href: "/contacto",
   },
 ];
 
@@ -182,12 +190,6 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <a
-              href="tel:1266"
-              className="hidden sm:flex items-center gap-1.5 text-xs font-medium text-primary bg-primary/5 px-3 py-1.5 rounded-full"
-            >
-              <Phone className="w-3.5 h-3.5" /> 1266
-            </a>
             <button
               onClick={() => setOpen(!open)}
               className="lg:hidden p-2 rounded-lg hover:bg-muted"

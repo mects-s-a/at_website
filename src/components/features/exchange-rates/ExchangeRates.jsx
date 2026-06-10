@@ -18,7 +18,7 @@ export default function ExchangeRates() {
           to="/taxa-de-cambio" 
           className="text-xs font-semibold text-primary hover:underline flex items-center gap-1"
         >
-          Ver todas →
+          Ver Mais »
         </Link>
       </div>
       <p className="text-sm text-muted-foreground mb-5">Valores em MZN (Metical)</p>
