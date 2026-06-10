@@ -7,7 +7,8 @@ const navItems = [
     label: "Institucional",
     href: "#institucional",
     submenu: [
-      { label: "Sobre a AT", href: "#institucional" },
+      // 🔄 Mude de "#institucional" para "/sobre-at"
+      { label: "Sobre a AT", href: "/sobre-at" }, 
       { label: "Organograma", href: "https://at-mocambique.tributo670.workers.dev" },
       { label: "Directório", href: "https://at-mocambique.tributo670.workers.dev" },
       { label: "Relatórios e Publicações", href: "https://at-mocambique.tributo670.workers.dev" },
@@ -17,6 +18,10 @@ const navItems = [
   {
     label: "Serviços",
     href: "#servicos",
+    submenu: [
+      { label: "Serviços Aduaneiros", href: "/sobre-at" }, 
+      { label: "Serviços Tributários", href: "https://at-mocambique.tributo670.workers.dev" },
+    ],
   },
   {
     label: "Legislação",
