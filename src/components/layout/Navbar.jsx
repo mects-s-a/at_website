@@ -27,11 +27,9 @@ const navItems = [
     label: "Legislação",
     href: "#",
     submenu: [
-      { label: "Código Tributário", href: "https://at-mocambique.tributo670.workers.dev/formularios.html" },
-      { label: "Regulamentos", href: "https://at-mocambique.tributo670.workers.dev/formularios.html" },
-      { label: "Circulares e Normas", href: "https://at-mocambique.tributo670.workers.dev/formularios.html" },
-      { label: "Boletins da República", href: "https://at-mocambique.tributo670.workers.dev/formularios.html" },
-      { label: "Lei de Combate ao Branqueamento", href: "https://at-mocambique.tributo670.workers.dev/formularios.html" },
+      { label: "Legislação Geral", href: "https://at-mocambique.tributo670.workers.dev/formularios.html" },
+      { label: "Legislação Fiscal", href: "https://at-mocambique.tributo670.workers.dev/formularios.html" },
+      { label: "Legislação Aduaneira", href: "https://at-mocambique.tributo670.workers.dev/formularios.html" },
     ],
   },
   {
