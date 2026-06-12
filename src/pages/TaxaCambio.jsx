@@ -1,6 +1,3 @@
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
-
 const rates = [
   { code: "USD", name: "Dólar Americano", country: "Estados Unidos da América", rate: 64.65, iso: "us" },
   { code: "ZAR", name: "Rand", country: "África do Sul", rate: 4.06, iso: "za" },
@@ -46,59 +43,39 @@ const rates = [
 export default function TaxaCambio() {
   return (
     <div className="min-h-screen bg-background font-inter">
-      <Navbar />
-      
       <div className="py-10 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-1">
-            Ferramentas
-          </p>
+          <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-1">Ferramentas</p>
           <h1 className="font-display text-3xl sm:text-4xl font-bold">Taxa de Câmbio</h1>
           <p className="text-white/60 mt-2">Valores de referência em Metical (MZN)</p>
         </div>
       </div>
-
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
         <div className="bg-card rounded-2xl border border-border overflow-hidden shadow-sm">
           <div className="hidden sm:grid grid-cols-4 gap-4 px-6 py-3 bg-muted text-xs font-semibold text-muted-foreground uppercase tracking-wider">
             <span>País</span>
-            <span>Código</span>
+            <span className="sm:pl-10">Código</span>
             <span>Descrição</span>
             <span className="text-right">Câmbio (MZN)</span>
           </div>
-          
           <div className="divide-y divide-border">
             {rates.map((r) => (
-              <div 
-                key={r.code} 
-                className="grid grid-cols-2 sm:grid-cols-4 gap-4 px-6 py-3.5 hover:bg-muted/40 transition-colors items-center"
-              >
+              <div key={r.code} className="grid grid-cols-2 sm:grid-cols-4 gap-4 px-6 py-3.5 hover:bg-muted/40 transition-colors items-center">
                 <div className="flex items-center gap-2">
-                  <img
-                    src={`https://flagcdn.com/w20/${r.iso}.png`}
-                    alt={r.country}
-                    className="w-6 h-4 object-cover rounded-sm shadow-sm"
-                  />
-                  <span className="text-sm text-foreground truncate max-w-[150px] sm:max-w-none">
-                    {r.country}
-                  </span>
+                  <div className="w-6 h-4 flex items-center justify-center overflow-hidden shrink-0">
+                    <img src={`https://flagcdn.com/w40/${r.iso}.png`} alt={r.country} className="w-full h-full object-contain filter drop-shadow-[0_1px_1px_rgba(0,0,0,0.1)]" />
+                  </div>
+                  <span className="text-sm text-foreground truncate max-w-[150px] sm:max-w-none">{r.country}</span>
                 </div>
-                <span className="font-mono font-bold text-sm text-primary">{r.code}</span>
+                <span className="font-mono font-bold text-sm text-primary pl-6 sm:pl-10">{r.code}</span>
                 <span className="text-sm text-muted-foreground hidden sm:block">{r.name}</span>
-                <span className="font-mono font-bold text-sm text-foreground text-right">
-                  {r.rate.toFixed(2)}
-                </span>
+                <span className="font-mono font-bold text-sm text-foreground text-right">{r.rate.toFixed(2)}</span>
               </div>
             ))}
           </div>
         </div>
-        
-        <p className="text-xs text-muted-foreground mt-4 text-center">
-          Valores indicativos. Fonte: Autoridade Tributária de Moçambique.
-        </p>
+        <p className="text-xs text-muted-foreground mt-4 text-center">Valores indicativos. Fonte: Autoridade Tributária de Moçambique.</p>
       </div>
-      
-      <Footer />
     </div>
   );
 }

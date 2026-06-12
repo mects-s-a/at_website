@@ -19,13 +19,13 @@ const channels = [
     title: "Presencial",
     info: "Sede Geral da AT, Maputo",
     icon: MapPin,
-    href: "https://www.google.com/maps/place/Autoridade+Tribut%C3%A1ria+de+Mo%C3%A7ambique/@-25.9746688,32.5711264,17z/data=!3m1!4b1!4m6!3m5!1s0x1ee69b05502461c7:0xbd52d11f32e73e38!8m2!3d-25.9746688!4d32.5737013!16s%2Fg%2F11c1s4byk2?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
+    href: "https://maps.app.goo.gl/33hQurS2wbjdknqW7"
   },
   {
     title: "Denúncias",
     info: "Canal seguro para denúncias",
     icon: TriangleAlert,
-    href: "#"
+    href: "https://denuncias.at.gov.mz/"
   }
 ];
 
@@ -33,8 +33,9 @@ export default function ContactChannels() {
   return (
     <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6">
       <div className="text-center mb-9">
-        <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-1">Apoio</p>
         <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">Canais de Atendimento</h2>
+        <br />
+        <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-1">Apoio</p>
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">

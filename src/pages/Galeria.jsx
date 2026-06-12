@@ -1,8 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import { X, ChevronLeft, ChevronRight, Images } from "lucide-react";
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
 import { albums } from "../data/gallery";
 
 function LightBox({ album, startIndex, onClose }) {
@@ -17,7 +15,6 @@ function LightBox({ album, startIndex, onClose }) {
     setIdx((i) => (i + 1) % album.photos.length);
   }, [album.photos.length]);
 
-  // Captura eventos de teclado para acessibilidade (A11y)
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") onClose();
@@ -35,10 +32,7 @@ function LightBox({ album, startIndex, onClose }) {
       role="dialog"
       aria-modal="true"
     >
-      <div
-        className="relative max-w-4xl w-full"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="relative max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
         <button
           onClick={onClose}
           className="absolute -top-10 right-0 text-white/70 hover:text-white transition-colors"
@@ -46,39 +40,23 @@ function LightBox({ album, startIndex, onClose }) {
         >
           <X className="w-6 h-6" />
         </button>
-
         <img
           src={photo.url}
           alt={photo.caption || "Imagem ampliada"}
           className="w-full max-h-[75vh] object-contain rounded-xl"
         />
         <p className="text-white/60 text-sm text-center mt-3">{photo.caption}</p>
-
-        {/* Botão Anterior */}
         <div className="absolute top-1/2 -translate-y-1/2 left-0 -ml-12">
-          <button
-            onClick={handlePrev}
-            className="text-white/70 hover:text-white p-2 transition-colors"
-            aria-label="Foto anterior"
-          >
+          <button onClick={handlePrev} className="text-white/70 hover:text-white p-2 transition-colors" aria-label="Foto anterior">
             <ChevronLeft className="w-8 h-8" />
           </button>
         </div>
-
-        {/* Botão Próximo */}
         <div className="absolute top-1/2 -translate-y-1/2 right-0 -mr-12">
-          <button
-            onClick={handleNext}
-            className="text-white/70 hover:text-white p-2 transition-colors"
-            aria-label="Próxima foto"
-          >
+          <button onClick={handleNext} className="text-white/70 hover:text-white p-2 transition-colors" aria-label="Próxima foto">
             <ChevronRight className="w-8 h-8" />
           </button>
         </div>
-
-        <p className="text-white/40 text-xs text-center mt-2">
-          {idx + 1} / {album.photos.length}
-        </p>
+        <p className="text-white/40 text-xs text-center mt-2">{idx + 1} / {album.photos.length}</p>
       </div>
     </div>
   );
@@ -86,13 +64,11 @@ function LightBox({ album, startIndex, onClose }) {
 
 LightBox.propTypes = {
   album: PropTypes.shape({
-    photos: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-        url: PropTypes.string.isRequired,
-        caption: PropTypes.string,
-      })
-    ).isRequired,
+    photos: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      url: PropTypes.string.isRequired,
+      caption: PropTypes.string,
+    })).isRequired,
   }).isRequired,
   startIndex: PropTypes.number.isRequired,
   onClose: PropTypes.func.isRequired,
@@ -109,17 +85,11 @@ function AlbumDetail({ album, onBack }) {
       >
         <ChevronLeft className="w-4 h-4" /> Voltar aos Álbuns
       </button>
-
       <h2 className="font-display text-2xl font-bold text-foreground mb-1">{album.title}</h2>
       <p className="text-muted-foreground text-sm mb-6">
-        {new Date(album.date).toLocaleDateString("pt-MZ", {
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        })}{" "}
+        {new Date(album.date).toLocaleDateString("pt-MZ", { day: "numeric", month: "long", year: "numeric" })}{" "}
         · {album.photos.length} fotos
       </p>
-
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
         {album.photos.map((photo, i) => (
           <button
@@ -135,7 +105,6 @@ function AlbumDetail({ album, onBack }) {
           </button>
         ))}
       </div>
-
       {lightbox !== null && (
         <LightBox album={album} startIndex={lightbox} onClose={() => setLightbox(null)} />
       )}
@@ -147,13 +116,11 @@ AlbumDetail.propTypes = {
   album: PropTypes.shape({
     title: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
-    photos: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-        url: PropTypes.string.isRequired,
-        caption: PropTypes.string,
-      })
-    ).isRequired,
+    photos: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      url: PropTypes.string.isRequired,
+      caption: PropTypes.string,
+    })).isRequired,
   }).isRequired,
   onBack: PropTypes.func.isRequired,
 };
@@ -163,9 +130,6 @@ export default function Galeria() {
 
   return (
     <div className="min-h-screen bg-background font-inter">
-      <Navbar />
-
-      {/* Cabeçalho da Página */}
       <div className="py-10 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-1">Media</p>
@@ -173,7 +137,6 @@ export default function Galeria() {
           <p className="text-white/60 mt-2">Álbuns de eventos e actividades da Autoridade Tributária</p>
         </div>
       </div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         {selectedAlbum ? (
           <AlbumDetail album={selectedAlbum} onBack={() => setSelectedAlbum(null)} />
@@ -198,11 +161,7 @@ export default function Galeria() {
                 </div>
                 <div className="p-4 flex-1 flex flex-col justify-between">
                   <p className="text-xs text-muted-foreground mb-1">
-                    {new Date(album.date).toLocaleDateString("pt-MZ", {
-                      day: "numeric",
-                      month: "short",
-                      year: "numeric",
-                    })}
+                    {new Date(album.date).toLocaleDateString("pt-MZ", { day: "numeric", month: "short", year: "numeric" })}
                   </p>
                   <h3 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors line-clamp-2">
                     {album.title}
@@ -213,8 +172,6 @@ export default function Galeria() {
           </div>
         )}
       </div>
-
-      <Footer />
     </div>
   );
 }
