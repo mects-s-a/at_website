@@ -15,13 +15,12 @@ export default function NewsSection() {
           <div className="hidden sm:block" /> 
           
           <div className="text-center col-span-3 sm:col-span-1">
+            <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-2">
+              Actualidades
+            </p>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">
               Notícias
             </h2>
-            <br />
-            <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-2">
-              Actualizadas
-            </p>
           </div>
 
           <div className="text-right col-span-3 sm:col-span-1 mt-4 sm:mt-0">
