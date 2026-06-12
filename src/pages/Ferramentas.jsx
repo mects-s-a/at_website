@@ -1,8 +1,11 @@
+import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 import TaxCalculator from "../components/features/tax/TaxCalculator";
 
 export default function Ferramentas() {
   return (
     <div className="min-h-screen bg-background font-inter">
+      <Navbar />
       <div className="py-10 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-1">Ferramentas</p>
@@ -11,6 +14,7 @@ export default function Ferramentas() {
         </div>
       </div>
       <TaxCalculator />
+      <Footer />
     </div>
   );
 }

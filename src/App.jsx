@@ -1,9 +1,6 @@
 import { Toaster } from "@/components/ui/toaster";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { BrowserRouter as Router, Route, Routes, Outlet, useNavigate } from 'react-router-dom';
-
-// Layout
-import Layout from './components/layout/Layout';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 
 // Page Component Imports
 import Home from './pages/Home';
@@ -12,7 +9,8 @@ import Ferramentas from './pages/Ferramentas';
 import Contacto from './pages/Contacto';
 import Noticias from './pages/Noticias';
 import Galeria from './pages/Galeria';
-import SobreAT from './pages/Seg/Institucional/SobreAT';
+// 🆕 Importação da nova página SobreAT
+import SobreAT from './pages/Seg/SobreAT'; 
 
 // Global UI Widget Imports
 import AIChatWidget from './components/features/ai-chat/AIChatWidget';
@@ -38,15 +36,6 @@ const queryClient = new QueryClient({
   },
 });
 
-// Layout route: renders Navbar + Footer around every child page via <Outlet />
-function LayoutRoute() {
-  return (
-    <Layout>
-      <Outlet />
-    </Layout>
-  );
-}
-
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
 
@@ -65,18 +54,16 @@ const AuthenticatedApp = () => {
 
   return (
     <Routes>
-      {/* All routes share the persistent Navbar + Footer via LayoutRoute */}
-      <Route element={<LayoutRoute />}>
-        <Route path="/"             element={<Home />} />
-        <Route path="/ferramentas"  element={<Ferramentas />} />
-        <Route path="/taxa-de-cambio" element={<TaxaCambio />} />
-        <Route path="/contacto"     element={<Contacto />} />
-        <Route path="/noticias"     element={<Noticias />} />
-        <Route path="/galeria"      element={<Galeria />} />
-        <Route path="/sobre-at"     element={<SobreAT />} />
-      </Route>
-
-      {/* 404 — outside Layout so it can have its own full-screen treatment */}
+      <Route path="/" element={<Home />} />
+      <Route path="/ferramentas" element={<Ferramentas />} />
+      <Route path="/taxa-de-cambio" element={<TaxaCambio />} />
+      <Route path="/contacto" element={<Contacto />} />
+      <Route path="/noticias" element={<Noticias />} />
+      <Route path="/galeria" element={<Galeria />} />
+      
+      {/* 🆕 Nova rota para a página SobreAT */}
+      <Route path="/sobre-at" element={<SobreAT />} /> 
+      
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
@@ -105,8 +92,10 @@ export default function App() {
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <Router>
+          {/* Main layout contents */}
           <AuthenticatedApp />
-          {/* Persistent global overlays — outside Layout intentionally */}
+          
+          {/* Persistent global overlays */}
           <AIChatWidget />
           <Toaster />
         </Router>
