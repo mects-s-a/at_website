@@ -687,4 +687,4 @@ const sobreATStyles = `
   }
 `;
 
-export default sobreATStyles;
+export default sobreATStyles; 
