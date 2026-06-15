@@ -1,6 +1,6 @@
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
-import sobreATStyles from "../Institucional/SobreATStyles";
+import sobreatstyles from "../Institucional/sobreatstyles";
 import ServicosSidebar from "./ServicosSidebar";
 
 /**
@@ -129,7 +129,7 @@ export default function Servicos() {
 
   return (
     <div className="sobre-at-container">
-      <style>{sobreATStyles}</style>
+      <style>{sobreatstyles}</style>
 
       <div className="shell">
 

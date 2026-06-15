@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
-import sobreATStyles from "./sobreATStyles";
+import sobreatstyles from "./sobreatstyles";
 import InstitucionalSidebar from "./InstitucionalSidebar";
 import SobreTab from "./SobreTab";
 import AtribuicoesTab from "./AtribuicoesTab";
@@ -72,7 +72,7 @@ export default function SobreAT() {
 
   return (
     <div className="sobre-at-container">
-      <style>{sobreATStyles}</style>
+      <style>{sobreatstyles}</style>
 
       <div className="shell">
 
