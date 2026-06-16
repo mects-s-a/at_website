@@ -1,8 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import { X, ChevronLeft, ChevronRight, Images } from "lucide-react";
-import Navbar from "../components/layout/navbar";
-import Footer from "../components/layout/footer";
 import { albums } from "../data/gallery";
 
 function LightBox({ album, startIndex, onClose }) {
@@ -162,9 +160,7 @@ export default function Galeria() {
   const [selectedAlbum, setSelectedAlbum] = useState(null);
 
   return (
-    <div className="min-h-screen bg-background font-inter">
-      <Navbar />
-
+    <div className="min-h-screen bg-background">
       {/* Cabeçalho da Página */}
       <div className="py-10 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -213,8 +209,6 @@ export default function Galeria() {
           </div>
         )}
       </div>
-
-      <Footer />
     </div>
   );
 }
