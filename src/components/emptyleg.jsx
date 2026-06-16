@@ -1,6 +1,6 @@
 // src/components/EmptyLeg.jsx
 // Shared layout used by LegGeral, LegFiscal, and LegAduaneira.
-import DownloadList from "./DownloadList";
+import DownloadList from "./downloadlist";
 
 /**
  * EmptyLeg — legislation page template

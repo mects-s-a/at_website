@@ -7,8 +7,8 @@ import ExchangeRates from "../components/features/exchange-rates/exchangerates";
 import Footer from "../components/layout/footer";
 
 // FIX: Pointing to the new modular feature folders
-import TaxServicesBreakdown from "../components/features/tax/TaxServicesBreakdown";
-import NewsSection from "../components/features/news/NewsSection";
+import TaxServicesBreakdown from "../components/features/tax/taxservicesbreakdown";
+import NewsSection from "../components/features/news/newssection";
 
 export default function Home() {
   return (

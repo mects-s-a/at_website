@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import { X, ChevronLeft, ChevronRight, Images } from "lucide-react";
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
+import Navbar from "../components/layout/navbar";
+import Footer from "../components/layout/footer";
 import { albums } from "../data/gallery";
 
 function LightBox({ album, startIndex, onClose }) {

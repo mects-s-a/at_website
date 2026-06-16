@@ -1,6 +1,6 @@
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
-import ContactForm from "../components/features/contact/ContactForm";
+import Navbar from "../components/layout/navbar";
+import Footer from "../components/layout/footer";
+import ContactForm from "../components/features/contact/contactform";
 
 export default function Contacto() {
   return (

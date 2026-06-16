@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from "react";
 import { ThumbsUp, ThumbsDown, Lightbulb, X, Paperclip } from "lucide-react";
-import { sendEmail } from "../contact/sendEmail";
+import { sendEmail } from "../contact/sendemail";
 
 const STYLES = `
   @keyframes floatUp {
