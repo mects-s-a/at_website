@@ -60,13 +60,15 @@ export default function TaxaCambio() {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
         <div className="bg-card rounded-2xl border border-border overflow-hidden shadow-sm">
+          {/* Header Row */}
           <div className="hidden sm:grid grid-cols-4 gap-4 px-6 py-3 bg-muted text-xs font-semibold text-muted-foreground uppercase tracking-wider">
             <span>País</span>
-            <span>Código</span>
+            <span className="sm:pl-10">Código</span> {/* Shifted header to align with the table values */}
             <span>Descrição</span>
             <span className="text-right">Câmbio (MZN)</span>
           </div>
           
+          {/* Data List rows */}
           <div className="divide-y divide-border">
             {rates.map((r) => (
               <div 
@@ -74,16 +76,23 @@ export default function TaxaCambio() {
                 className="grid grid-cols-2 sm:grid-cols-4 gap-4 px-6 py-3.5 hover:bg-muted/40 transition-colors items-center"
               >
                 <div className="flex items-center gap-2">
-                  <img
-                    src={`https://flagcdn.com/w20/${r.iso}.png`}
-                    alt={r.country}
-                    className="w-6 h-4 object-cover rounded-sm shadow-sm"
-                  />
+                  <div className="w-6 h-4 flex items-center justify-center overflow-hidden shrink-0">
+                    <img
+                      src={`https://flagcdn.com/w40/${r.iso}.png`}
+                      alt={r.country}
+                      className="w-full h-full object-contain filter drop-shadow-[0_1px_1px_rgba(0,0,0,0.1)]"
+                    />
+                  </div>
                   <span className="text-sm text-foreground truncate max-w-[150px] sm:max-w-none">
                     {r.country}
                   </span>
                 </div>
-                <span className="font-mono font-bold text-sm text-primary">{r.code}</span>
+                
+                {/* Shifted Code column element slightly right using localized left padding */}
+                <span className="font-mono font-bold text-sm text-primary pl-6 sm:pl-10">
+                  {r.code}
+                </span>
+                
                 <span className="text-sm text-muted-foreground hidden sm:block">{r.name}</span>
                 <span className="font-mono font-bold text-sm text-foreground text-right">
                   {r.rate.toFixed(2)}
