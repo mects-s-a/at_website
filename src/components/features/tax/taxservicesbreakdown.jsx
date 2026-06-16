@@ -159,7 +159,7 @@ function Modal({ card, onClose, onSuccess }) {
     }
   };
 
-  const inputCls = "w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all";
+  const inputCls = "w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-transparent transition-all text-gray-800";
 
   return (
     <div
@@ -167,7 +167,7 @@ function Modal({ card, onClose, onSuccess }) {
       style={{ background: "rgba(0,0,0,0.55)" }}
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
-      <div className="modal-in bg-white rounded-2xl shadow-2xl w-full max-w-md">
+      <div className="modal-in bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
 
         {/* Header */}
         <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-gray-100">
@@ -180,8 +180,8 @@ function Modal({ card, onClose, onSuccess }) {
           </button>
         </div>
 
-        {/* Fields with standard dark gray text labels */}
-        <div className="px-6 py-5 space-y-4">
+        {/* Fields */}
+        <div className="px-6 py-5 space-y-4 max-h-[70vh] overflow-y-auto">
           {[
             { key: "nome",     label: "Nome Completo",        type: "text",  required: true },
             { key: "email",    label: "Email",                type: "email", required: true },
@@ -220,7 +220,7 @@ function Modal({ card, onClose, onSuccess }) {
             </label>
             <label className="flex items-center gap-2.5 cursor-pointer">
               <span
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold text-white hover:opacity-90 transition-opacity whitespace-nowrap select-none"
                 style={{ background: card.btnBg }}
               >
                 <Paperclip size={14} />
@@ -237,7 +237,7 @@ function Modal({ card, onClose, onSuccess }) {
         </div>
 
         {/* Submit */}
-        <div className="px-6 pb-6">
+        <div className="px-6 pb-6 pt-2 border-t border-gray-50">
           <button
             onClick={submit}
             disabled={sending}
@@ -298,10 +298,8 @@ export default function CanalDoOuvinte() {
       <section className="py-10 sm:py-14 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-          <div className="text-center mb-6">
-            <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-2">
-              A Sua Voz Importa
-            </p>
+          {/* Top Header */}
+          <div className="text-center mb-8">
             <h2 className="font-display text-2xl sm:text-3xl font-bold mb-3">
               Canal do Ouvinte
             </h2>
@@ -310,7 +308,8 @@ export default function CanalDoOuvinte() {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-5 max-w-2xl mx-auto">
+          {/* Cards Grid — Updated to responsive grid columns */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-2xl mx-auto">
             {CARDS.map((card) => (
               <button
                 key={card.type}
@@ -348,6 +347,13 @@ export default function CanalDoOuvinte() {
                 <p className="text-white/50 text-xs leading-relaxed hidden sm:block">{card.sub}</p>
               </button>
             ))}
+          </div>
+
+          {/* Subtitle / Notice Section */}
+          <div className="text-center mt-8">
+            <p className="text-accent font-semibold text-xs tracking-widest uppercase">
+              A Sua Voz Importa
+            </p>
           </div>
 
         </div>

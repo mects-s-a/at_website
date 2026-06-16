@@ -1,27 +1,24 @@
-import Navbar from "../components/layout/navbar";
 import HeroCarousel from "../components/sections/herocarousel";
 import ServicesSection from "../components/sections/servicessection";
 import ContactChannels from "../components/features/ai-chat/contactchannels";
 import FiscalCalendar from "../components/features/fiscal-calendar/fiscalcalendar";
 import ExchangeRates from "../components/features/exchange-rates/exchangerates";
-import Footer from "../components/layout/footer";
 
-// FIX: Pointing to the new modular feature folders
+// Modular feature folders
 import TaxServicesBreakdown from "../components/features/tax/taxservicesbreakdown";
 import NewsSection from "../components/features/news/newssection";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background font-inter">
-      <Navbar />
+      {/* Removido: Navbar (Agora gerenciada pelo Layout global) */}
       <HeroCarousel />
       <ServicesSection />
       <NewsSection />
       <ContactChannels />
       <TaxServicesBreakdown />
 
-      {/* id="calendario" lets the nav anchor "#calendario" scroll here directly */}
-      {/* REDUZIDO: de py-20 sm:py-28 para py-12 sm:py-16 */}
+      {/* Seção do Calendário e Câmbio */}
       <section id="calendario" className="py-12 sm:py-16 bg-muted/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-6">
@@ -30,8 +27,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <Footer />
+      
+      {/* Removido: Footer (Agora gerenciado pelo Layout global) */}
     </div>
   );
 }
