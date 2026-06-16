@@ -1,10 +1,10 @@
-import Navbar from "../components/layout/Navbar";
-import HeroCarousel from "../components/sections/HeroCarousel";
-import ServicesSection from "../components/sections/ServicesSection";
-import ContactChannels from "../components/features/ai-chat/ContactChannels";
-import FiscalCalendar from "../components/features/fiscal-calendar/FiscalCalendar";
-import ExchangeRates from "../components/features/exchange-rates/ExchangeRates";
-import Footer from "../components/layout/Footer";
+import Navbar from "../components/layout/navbar";
+import HeroCarousel from "../components/sections/herocarousel";
+import ServicesSection from "../components/sections/servicessection";
+import ContactChannels from "../components/features/ai-chat/contactchannels";
+import FiscalCalendar from "../components/features/fiscal-calendar/fiscalcalendar";
+import ExchangeRates from "../components/features/exchange-rates/exchangerates";
+import Footer from "../components/layout/footer";
 
 // FIX: Pointing to the new modular feature folders
 import TaxServicesBreakdown from "../components/features/tax/TaxServicesBreakdown";

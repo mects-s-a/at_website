@@ -3,17 +3,17 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 
 // Page Component Imports
-import Home from './pages/Home';
-import TaxaCambio from './pages/TaxaCambio';
-import Ferramentas from './pages/Ferramentas';
-import Contacto from './pages/Contacto';
-import Noticias from './pages/Noticias';
-import Galeria from './pages/Galeria';
+import Home from './pages/home';
+import TaxaCambio from './pages/taxacambio';
+import Ferramentas from './pages/ferramentas';
+import Contacto from './pages/contacto';
+import Noticias from './pages/noticias';
+import Galeria from './pages/galeria';
 // 🆕 Importação da nova página SobreAT
-import SobreAT from './pages/Seg/SobreAT'; 
+import SobreAT from './pages/Seg/sobreat'; 
 
 // Global UI Widget Imports
-import AIChatWidget from './components/features/ai-chat/AIChatWidget';
+import AIChatWidget from './components/features/ai-chat/aichatwidget';
 
 // 🔐 Auth mocks — replace when real auth is wired up
 const AuthProvider = ({ children }) => children;
