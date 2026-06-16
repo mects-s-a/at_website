@@ -9,7 +9,7 @@ import Ferramentas from './pages/ferramentas';
 import Contacto from './pages/contacto';
 import Noticias from './pages/noticias';
 import Galeria from './pages/galeria';
-import SobreAT from './pages/seg/sobreat'; 
+import SobreAT from './pages/Seg/sobreat'; 
 
 // Layout Import
 import Layout from './components/layout/layout';
