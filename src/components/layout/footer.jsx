@@ -1,6 +1,6 @@
 import { MapPin, Phone, Mail } from "lucide-react";
 // 1. Importa corretamente a imagem a partir da pasta utils
-import logoAT from "../../utils/Logo-da-AT.png"; 
+import logoAT from "../../utils/logo-da-at.png"; 
 
 export default function Footer() {
   return (
