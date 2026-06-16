@@ -2,20 +2,22 @@ import { Toaster } from "@/components/ui/toaster";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 
-// Page Component Imports
+// Page Component Imports (Caminhos em minúsculas)
 import Home from './pages/home';
 import TaxaCambio from './pages/taxacambio';
 import Ferramentas from './pages/ferramentas';
 import Contacto from './pages/contacto';
 import Noticias from './pages/noticias';
 import Galeria from './pages/galeria';
-// 🆕 Importação da nova página SobreAT
-import SobreAT from './pages/Seg/sobreat'; 
+import SobreAT from './pages/seg/sobreat'; 
+
+// Layout Import
+import Layout from './components/layout/layout';
 
 // Global UI Widget Imports
 import AIChatWidget from './components/features/ai-chat/aichatwidget';
 
-// 🔐 Auth mocks — replace when real auth is wired up
+// 🔐 Auth mocks
 const AuthProvider = ({ children }) => children;
 const useAuth = () => ({
   isLoadingAuth: false,
@@ -60,10 +62,7 @@ const AuthenticatedApp = () => {
       <Route path="/contacto" element={<Contacto />} />
       <Route path="/noticias" element={<Noticias />} />
       <Route path="/galeria" element={<Galeria />} />
-      
-      {/* 🆕 Nova rota para a página SobreAT */}
       <Route path="/sobre-at" element={<SobreAT />} /> 
-      
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
@@ -92,8 +91,10 @@ export default function App() {
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <Router>
-          {/* Main layout contents */}
-          <AuthenticatedApp />
+          {/* Main layout contents wrapped inside Layout */}
+          <Layout>
+            <AuthenticatedApp />
+          </Layout>
           
           {/* Persistent global overlays */}
           <AIChatWidget />
