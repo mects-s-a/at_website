@@ -5,6 +5,29 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const articles = [
+  
+  {
+    id: 4,
+    title: "Atendimento Humanizado e Controlo Eficaz das Receitas no Centro das Atenções do Presidente da AT",
+    summary:
+      "Durante visita de trabalho à Delegação de Maputo, Aníbal Mbalango defendeu a empatia no atendimento ao contribuinte aliada ao rigor na fiscalização e proteção das receitas do Estado.",
+    img: "/src/components/Media/Content/PAT TIMAR web_050744.png",
+    url: "/noticias/atendimento-humanizado",
+    date: "2026-06-04",
+    category: "Institucional",
+    featured: true,
+  },
+  {
+    id: 5,
+    title: "Presidente da AT Partilha o 'ABC dos Impostos' com Petizes da Escola 16 de Junho",
+    summary:
+      "Em alusão ao Dia Internacional da Criança, a AT promoveu uma ação educativa de cidadania fiscal para explicar a importância dos tributos no desenvolvimento socioeconómico de Moçambique.",
+    img: "/src/components/Media/Dia da Criança - AT/PAT 1 de Junho_094712.png",
+    url: "/noticias/abc-dos-impostos",
+    date: "2026-06-03",
+    category: "Eventos",
+    featured: true,
+  },  
   {
     id: 1,
     title: '"O Governo continuará a apostar na Modernização da AT"',
@@ -25,7 +48,7 @@ export const articles = [
     url: "https://at-mocambique.tributo670.workers.dev/7%20de%20abril.html",
     date: "2025-04-07",
     category: "Eventos",
-    featured: true,
+    featured: false,
   },
   {
     id: 3,
@@ -36,8 +59,11 @@ export const articles = [
     url: "https://at-mocambique.tributo670.workers.dev/AT%20BUSACA.html",
     date: "2025-02-20",
     category: "Fiscal",
-    featured: true,
+    featured: false,
   },
 ];
 
 export const featuredArticles = articles.filter((a) => a.featured);
+
+
+

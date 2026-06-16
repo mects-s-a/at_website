@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArrowRight, Star } from "lucide-react";
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
+import Navbar from "../components/layout/navbar";
+import Footer from "../components/layout/footer";
 import { articles } from "../data/news";
 
 const categories = ["Todas", ...Array.from(new Set(articles.map((a) => a.category)))];

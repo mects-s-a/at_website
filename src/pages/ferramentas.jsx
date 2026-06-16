@@ -1,6 +1,6 @@
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
-import TaxCalculator from "../components/features/tax/TaxCalculator";
+import Navbar from "../components/layout/navbar";
+import Footer from "../components/layout/footer";
+import TaxCalculator from "../components/features/tax/taxcalculator";
 
 export default function Ferramentas() {
   return (

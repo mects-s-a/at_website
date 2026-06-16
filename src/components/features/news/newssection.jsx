@@ -3,12 +3,18 @@ import { ArrowRight } from "lucide-react";
 // Path updated to reference the true structural location shown in Screenshot (869).jpg
 import { featuredArticles } from "@/data/news";
 
-export default function NewsSection() {
+export default function NewsSection() { 
   return (
-    <section id="noticias" className="py-20 sm:py-28 bg-muted/50">
+    <section id="noticias" className="py-12 sm:py-16 bg-muted/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-end justify-between mb-10">
-          <div>
+        
+        {/* Centered Header with "Ver Mais" anchored to the right */}
+        {/* REDUZIDO: mb-14 para mb-8 */}
+        <div className="grid grid-cols-3 items-end mb-8">
+          {/* Left empty spacer to balance the grid and keep title perfectly centered */}
+          <div className="hidden sm:block" /> 
+          
+          <div className="text-center col-span-3 sm:col-span-1">
             <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-2">
               Actualidades
             </p>
@@ -16,12 +22,15 @@ export default function NewsSection() {
               Notícias
             </h2>
           </div>
-          <Link
-            to="/noticias"
-            className="text-sm font-bold text-primary hover:text-primary/80 hover:underline flex items-center gap-1 shrink-0 mb-1 transition-colors"
-          >
-            Ver Mais »
-          </Link>
+
+          <div className="text-right col-span-3 sm:col-span-1 mt-4 sm:mt-0">
+            <Link
+              to="/noticias"
+              className="text-sm font-bold text-primary hover:text-primary/80 hover:underline inline-flex items-center gap-1 transition-colors"
+            >
+              Ver Mais »
+            </Link>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
