@@ -1,6 +1,3 @@
-import Navbar from "../components/layout/navbar";
-import Footer from "../components/layout/footer";
-
 const rates = [
   { code: "USD", name: "Dólar Americano", country: "Estados Unidos da América", rate: 64.65, iso: "us" },
   { code: "ZAR", name: "Rand", country: "África do Sul", rate: 4.06, iso: "za" },
@@ -43,11 +40,10 @@ const rates = [
   { code: "AOA", name: "Kwanza", country: "Angola", rate: 0.08, iso: "ao" },
 ];
 
+
 export default function TaxaCambio() {
   return (
-    <div className="min-h-screen bg-background font-inter">
-      <Navbar />
-      
+    <div className="min-h-screen bg-background">
       <div className="py-10 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-1">
@@ -60,15 +56,13 @@ export default function TaxaCambio() {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
         <div className="bg-card rounded-2xl border border-border overflow-hidden shadow-sm">
-          {/* Header Row */}
           <div className="hidden sm:grid grid-cols-4 gap-4 px-6 py-3 bg-muted text-xs font-semibold text-muted-foreground uppercase tracking-wider">
             <span>País</span>
-            <span className="sm:pl-10">Código</span> {/* Shifted header to align with the table values */}
+            <span className="sm:pl-10">Código</span>
             <span>Descrição</span>
             <span className="text-right">Câmbio (MZN)</span>
           </div>
           
-          {/* Data List rows */}
           <div className="divide-y divide-border">
             {rates.map((r) => (
               <div 
@@ -88,7 +82,6 @@ export default function TaxaCambio() {
                   </span>
                 </div>
                 
-                {/* Shifted Code column element slightly right using localized left padding */}
                 <span className="font-mono font-bold text-sm text-primary pl-6 sm:pl-10">
                   {r.code}
                 </span>
@@ -106,8 +99,6 @@ export default function TaxaCambio() {
           Valores indicativos. Fonte: Autoridade Tributária de Moçambique.
         </p>
       </div>
-      
-      <Footer />
     </div>
   );
 }

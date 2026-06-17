@@ -1,11 +1,8 @@
-import Navbar from "../components/layout/navbar";
-import Footer from "../components/layout/footer";
 import ContactForm from "../components/features/contact/contactform";
 
 export default function Contacto() {
   return (
-    <div className="min-h-screen bg-background font-inter">
-      <Navbar />
+    <div className="min-h-screen bg-background">
       <div className="py-10 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-1">
@@ -20,7 +17,6 @@ export default function Contacto() {
         </div>
       </div>
       <ContactForm />
-      <Footer />
     </div>
   );
 }
