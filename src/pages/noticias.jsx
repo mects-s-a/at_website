@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { ArrowRight, Star } from "lucide-react";
-import Navbar from "../components/layout/navbar";
-import Footer from "../components/layout/footer";
 import { articles } from "../data/news";
 
 const categories = ["Todas", ...Array.from(new Set(articles.map((a) => a.category)))];
@@ -15,9 +13,7 @@ export default function Noticias() {
       : articles.filter((a) => a.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-background font-inter">
-      <Navbar />
-
+    <div className="w-full">
       {/* Page header */}
       <div className="py-10 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -99,8 +95,6 @@ export default function Noticias() {
           </div>
         )}
       </div>
-
-      <Footer />
     </div>
   );
 }

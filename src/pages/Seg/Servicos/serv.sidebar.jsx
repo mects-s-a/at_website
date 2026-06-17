@@ -14,9 +14,9 @@ const NAV = [
   {
     section: "Serviços Tributários",
     items: [
-      { label: "Impostos",           path: "/servicos/impostos",           icon: ReceiptText },
-      { label: "Calendário Fiscal",  path: "/servicos/calendario-fiscal",  icon: CalendarDays},
-      { label: "Formulários Fiscais",path: "/servicos/formularios-fiscais",icon: FileText    },
+      { label: "Impostos",            path: "/servicos/impostos",            icon: ReceiptText  },
+      { label: "Calendário Fiscal",   path: "/servicos/calendario-fiscal",   icon: CalendarDays },
+      { label: "Formulários Fiscais", path: "/servicos/formularios-fiscais", icon: FileText     },
     ],
   },
 ];
@@ -35,6 +35,7 @@ export default function ServicosSidebar() {
             <div className="px-5 pt-4 pb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
               {group.section}
             </div>
+
             {group.items.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.path;
@@ -58,9 +59,11 @@ export default function ServicosSidebar() {
                 </Link>
               );
             })}
+
             {gi < NAV.length - 1 && <div className="mx-5 my-2 border-t border-border" />}
           </div>
         ))}
+
         <div className="px-5 py-4 mt-1 border-t border-border">
           <p className="text-xs text-muted-foreground leading-relaxed">
             Precisa de ajuda?{" "}
