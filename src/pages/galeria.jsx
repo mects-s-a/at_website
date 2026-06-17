@@ -15,7 +15,6 @@ function LightBox({ album, startIndex, onClose }) {
     setIdx((i) => (i + 1) % album.photos.length);
   }, [album.photos.length]);
 
-  // Captura eventos de teclado para acessibilidade (A11y)
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") onClose();
@@ -160,7 +159,7 @@ export default function Galeria() {
   const [selectedAlbum, setSelectedAlbum] = useState(null);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="w-full">
       {/* Cabeçalho da Página */}
       <div className="py-10 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">

@@ -1,7 +1,7 @@
-import { useParams, useNavigate, Navigate } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
-import sobreATStyles from "../Institucional/SobreATStyles";
-import ServicosSidebar from "./ServicosSidebar";
+import sobreATStyles from "../Institucional/atstyles";
+import ServicosSidebar from "./serv.sidebar";
 
 function ComingSoonTab({ title, desc }) {
   return (

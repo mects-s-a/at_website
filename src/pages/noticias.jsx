@@ -13,7 +13,8 @@ export default function Noticias() {
       : articles.filter((a) => a.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="w-full">
+      {/* Page header */}
       <div className="py-10 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-1">Media</p>
@@ -25,6 +26,7 @@ export default function Noticias() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+        {/* Category filter */}
         <div className="flex flex-wrap gap-2 mb-10">
           {categories.map((cat) => (
             <button
@@ -41,6 +43,7 @@ export default function Noticias() {
           ))}
         </div>
 
+        {/* Articles grid */}
         {filtered.length === 0 ? (
           <p className="text-muted-foreground text-sm py-8">
             Nenhuma notícia encontrada nesta categoria.
