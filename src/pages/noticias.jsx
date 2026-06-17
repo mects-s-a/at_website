@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { ArrowRight, Star } from "lucide-react";
-import Navbar from "../components/layout/navbar";
-import Footer from "../components/layout/footer";
 import { articles } from "../data/news";
 
 const categories = ["Todas", ...Array.from(new Set(articles.map((a) => a.category)))];
@@ -15,10 +13,7 @@ export default function Noticias() {
       : articles.filter((a) => a.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-background font-inter">
-      <Navbar />
-
-      {/* Page header */}
+    <div className="min-h-screen bg-background">
       <div className="py-10 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-1">Media</p>
@@ -30,7 +25,6 @@ export default function Noticias() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-        {/* Category filter */}
         <div className="flex flex-wrap gap-2 mb-10">
           {categories.map((cat) => (
             <button
@@ -47,7 +41,6 @@ export default function Noticias() {
           ))}
         </div>
 
-        {/* Articles grid */}
         {filtered.length === 0 ? (
           <p className="text-muted-foreground text-sm py-8">
             Nenhuma notícia encontrada nesta categoria.
@@ -99,8 +92,6 @@ export default function Noticias() {
           </div>
         )}
       </div>
-
-      <Footer />
     </div>
   );
 }
