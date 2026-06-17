@@ -1,4 +1,4 @@
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import sobreATStyles from "../Institucional/atstyles";
 import ServicosSidebar from "./serv.sidebar";
@@ -24,7 +24,7 @@ const TABS = {
     component: () => <ComingSoonTab title="Procedimentos Aduaneiros" />,
   },
   "pauta-aduaneira": {
-    hero: { title: "Pauta Aduaneira", desc: "Pesquise as taxas e classificações tarifárias aplicáveis às mercadorias que transitam pela fronteira moçambicana." },
+    hero: { title: "Pauta Aduaneira", desc: "Pesquise as taxas e classifications tarifárias aplicáveis às mercadorias que transitam pela fronteira moçambicana." },
     breadcrumb: "Pauta Aduaneira", section: "Serviços Aduaneiros",
     component: () => <ComingSoonTab title="Pauta Aduaneira" />,
   },
@@ -69,20 +69,28 @@ export default function Servicos() {
       <div className="shell">
         <ServicosSidebar />
         <main className="main-content">
+          
+          {/* Underlined clickable "Início" entry point */}
           <div className="custom-breadcrumb">
-            <span>Início</span>
-            <ChevronRight className="w-3.5 h-3.5 opacity-50" />
-            <span>Serviços</span>
+            <Link 
+              to="/" 
+              style={{ color: "inherit", textDecoration: "underline" }} 
+              className="hover:opacity-80 transition-opacity"
+            >
+              Início
+            </Link>
             <ChevronRight className="w-3.5 h-3.5 opacity-50" />
             <span style={{ color: "var(--sat-muted-fg)" }}>{tab.section}</span>
             <ChevronRight className="w-3.5 h-3.5 opacity-50" />
             <span className="current">{tab.breadcrumb}</span>
           </div>
+
           <div className="page-hero">
             <div className="eyebrow">Autoridade Tributária de Moçambique</div>
             <h1>{tab.hero.title}</h1>
             <p>{tab.hero.desc}</p>
           </div>
+          
           <TabComponent />
         </main>
       </div>
