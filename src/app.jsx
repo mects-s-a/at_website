@@ -14,6 +14,7 @@ import Noticias from './pages/noticias';
 import Galeria from './pages/galeria';
 import SobreAT from './pages/Seg/Institucional/sobre-at';
 import Servicos from './pages/Seg/Servicos/servicos';
+import Legislacao from './pages/Seg/Legislation/legislacao'; // ⚖️ Novo módulo de legislação
 
 // Global UI Widget Imports
 import AIChatWidget from './components/features/ai-chat/aichatwidget';
@@ -81,6 +82,10 @@ const AuthenticatedApp = () => {
         {/* Serviços — redirect bare /servicos to first page */}
         <Route path="/servicos"       element={<Navigate to="/servicos/procedimentos-aduaneiros" replace />} />
         <Route path="/servicos/:slug" element={<Servicos />} />
+
+        {/* ⚖️ Legislação — redirect bare /legislacao to first page */}
+        <Route path="/legislacao"       element={<Navigate to="/legislacao/geral" replace />} />
+        <Route path="/legislacao/:slug" element={<Legislacao />} />
       </Route>
 
       {/* 404 — outside Layout for full-screen treatment */}

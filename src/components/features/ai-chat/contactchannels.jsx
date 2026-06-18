@@ -33,8 +33,9 @@ export default function ContactChannels() {
   return (
     <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6">
       <div className="text-center mb-9">
-        <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-1">Apoio</p>
         <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">Canais de Atendimento</h2>
+        <br></br>
+        <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-1">Apoio</p>
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
