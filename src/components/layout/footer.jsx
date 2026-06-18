@@ -60,7 +60,7 @@ export default function Footer() {
                 
                 {/* Botão Facebook */}
                 <a 
-                  href="https://www.facebook.com" 
+                  href="https://web.facebook.com/at.gov" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-2.5 bg-white text-black p-1.5 rounded-xl transition-all duration-300 hover:bg-[#1877F2] hover:text-white group"
@@ -77,7 +77,7 @@ export default function Footer() {
 
                 {/* Botão WhatsApp */}
                 <a 
-                  href="https://wa.me" 
+                  href="https://www.whatsapp.com/channel/0029VbAKtBqDp2Q28J46y30s" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-2.5 bg-white text-black p-1.5 rounded-xl transition-all duration-300 hover:bg-[#25D366] hover:text-white group"

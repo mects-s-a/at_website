@@ -25,7 +25,7 @@ const channels = [
     title: "Denúncias",
     info: "Canal seguro para denúncias",
     icon: TriangleAlert,
-    href: "#"
+    href: "https://denuncias.at.gov.mz/"
   }
 ];
 
