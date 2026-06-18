@@ -10,7 +10,7 @@ function getTaxDays(year, month) {
   days.add(15);  // IVA sem movimentos + IVA com créditos
   days.add(20);  // IRPS + IRPC declarations
 
-  // Last day of month — IVA com pagamento
+  // Last day of month - IVA com pagamento
   days.add(lastDay);
 
   // April (3) and May (4) extras
@@ -18,7 +18,7 @@ function getTaxDays(year, month) {
     days.add(10); // ISPC 1st quarter guides (approximate mid-deadline)
   }
   if (month === 4) {
-    days.add(31); // 31 May — first IRPC Pagamento por conta (May always has 31)
+    days.add(31); // 31 May - first IRPC Pagamento por conta (May always has 31)
   }
 
   return days;

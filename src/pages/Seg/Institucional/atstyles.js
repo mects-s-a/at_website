@@ -1,4 +1,4 @@
-// atstyles.js — shared styles for Institucional and Servicos pages
+// atstyles.js - shared styles for Institucional and Servicos pages
 // Colour values mirror index.css global tokens exactly.
 // --primary       hsl(218 73% 38%) → #1B4FAB
 // --primary-dark                   → #0F3278
