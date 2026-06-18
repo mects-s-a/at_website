@@ -5,34 +5,21 @@ import { BrowserRouter as Router, Route, Routes, Outlet, Navigate, useNavigate }
 // Layout
 import Layout from './components/layout/layout';
 
-// Page Component Imports (lowercase filenames)
+// Page Component Imports (lowercase filenames, preserved folder casing)
 import Home from './pages/home';
 import TaxaCambio from './pages/taxacambio';
 import Ferramentas from './pages/ferramentas';
 import Contacto from './pages/contacto';
 import Noticias from './pages/noticias';
 import Galeria from './pages/galeria';
-import SobreAT from './pages/Seg/Institucional/sobre-at';
 import Servicos from './pages/Seg/Servicos/servicos';
-import Legislacao from './pages/Seg/Legislation/legislacao'; // ⚖️ Novo módulo de legislação
+import Legislacao from './pages/Seg/Legislation/legislacao'; 
+
+// Tabbed Institutional Navigation Component
+import Navigation from './components/layout/navigation';
 
 // Global UI Widget Imports
 import AIChatWidget from './components/features/ai-chat/aichatwidget';
-
-// 🔐 Auth mocks
-const AuthProvider = ({ children }) => children;
-const useAuth = () => ({
-  isLoadingAuth: false,
-  isLoadingPublicSettings: false,
-  authError: null,
-  navigateToLogin: () => console.log("Redirecionando para o login..."),
-});
-
-const UserNotRegisteredError = () => (
-  <div className="p-12 text-center text-red-500 font-medium">
-    Utilizador não registado no sistema.
-  </div>
-);
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,7 +27,6 @@ const queryClient = new QueryClient({
   },
 });
 
-// Layout route — renders Navbar + Footer around every child via <Outlet />
 function LayoutRoute() {
   return (
     <Layout>
@@ -49,22 +35,7 @@ function LayoutRoute() {
   );
 }
 
-const AuthenticatedApp = () => {
-  const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
-
-  if (isLoadingPublicSettings || isLoadingAuth) {
-    return (
-      <div className="fixed inset-0 flex items-center justify-center bg-white">
-        <div className="w-8 h-8 border-4 border-slate-200 border-t-slate-800 rounded-full animate-spin" />
-      </div>
-    );
-  }
-
-  if (authError) {
-    if (authError.type === 'user_not_registered') return <UserNotRegisteredError />;
-    if (authError.type === 'auth_required') { navigateToLogin(); return null; }
-  }
-
+function AppRoutes() {
   return (
     <Routes>
       <Route element={<LayoutRoute />}>
@@ -76,23 +47,23 @@ const AuthenticatedApp = () => {
         <Route path="/noticias"       element={<Noticias />} />
         <Route path="/galeria"        element={<Galeria />} />
 
-        {/* Institucional */}
-        <Route path="/sobre-at"       element={<SobreAT />} />
+        {/* 🏛️ Institucional - Agora padronizado com Slugs de rota */}
+        <Route path="/sobre-at"       element={<Navigate to="/sobre-at/sobre" replace />} />
+        <Route path="/sobre-at/:slug" element={<Navigation />} />
 
-        {/* Serviços — redirect bare /servicos to first page */}
+        {/* Serviços */}
         <Route path="/servicos"       element={<Navigate to="/servicos/procedimentos-aduaneiros" replace />} />
         <Route path="/servicos/:slug" element={<Servicos />} />
 
-        {/* ⚖️ Legislação — redirect bare /legislacao to first page */}
+        {/* ⚖️ Legislação */}
         <Route path="/legislacao"       element={<Navigate to="/legislacao/geral" replace />} />
         <Route path="/legislacao/:slug" element={<Legislacao />} />
       </Route>
 
-      {/* 404 — outside Layout for full-screen treatment */}
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
-};
+}
 
 function PageNotFound() {
   const navigate = useNavigate();
@@ -114,15 +85,12 @@ function PageNotFound() {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <AuthenticatedApp />
-          {/* Persistent global overlays — intentionally outside Layout */}
-          <AIChatWidget />
-          <Toaster />
-        </Router>
-      </QueryClientProvider>
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <AppRoutes />
+        <AIChatWidget />
+        <Toaster />
+      </Router>
+    </QueryClientProvider>
   );
 }

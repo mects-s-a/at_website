@@ -2,6 +2,12 @@ import { useParams, Navigate, Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import sobreATStyles from "../Institucional/atstyles";
 import ServicosSidebar from "./serv.sidebar";
+import ProcedimentosAduaneirosContent from "./Procedimentos/procedimentos-aduaneiros-tab";
+import PautaAduaneiraTab from "./Pauta/pauta-aduaneira-tab"; 
+import FormulariosAduaneirosTab from "./Formularios/formularios-aduaneiros-tab";
+import EstanciasAduaneirasTab from "./Estancias/estancias-aduaneiras-tab";
+import ImpostosTab from "./Impostos/impostos-tab";
+import FiscalCalendar from "./calendario-fiscal-tab"; // CAMINHO CORRIGIDO
 
 function ComingSoonTab({ title, desc }) {
   return (
@@ -21,35 +27,35 @@ const TABS = {
   "procedimentos-aduaneiros": {
     hero: { title: "Procedimentos Aduaneiros", desc: "Consulte os processos de desalfandegamento, regimes aduaneiros especiais e os requisitos para importação e exportação de mercadorias." },
     breadcrumb: "Procedimentos Aduaneiros", section: "Serviços Aduaneiros",
-    component: () => <ComingSoonTab title="Procedimentos Aduaneiros" />,
+    component: ProcedimentosAduaneirosContent,
   },
   "pauta-aduaneira": {
-    hero: { title: "Pauta Aduaneira", desc: "Pesquise as taxas e classifications tarifárias aplicáveis às mercadorias que transitam pela fronteira moçambicana." },
+    hero: { title: "Pauta Aduaneira", desc: "Pesquise as taxas e classificações tarifárias aplicáveis às mercadorias que transitam pela fronteira moçambicana." },
     breadcrumb: "Pauta Aduaneira", section: "Serviços Aduaneiros",
-    component: () => <ComingSoonTab title="Pauta Aduaneira" />,
+    component: PautaAduaneiraTab,
   },
   "formularios-aduaneiros": {
-    hero: { title: "Formulários Aduaneiros", desc: "Descarregue os formulários oficiais necessários para os processos de declaração e desalfandegamento aduaneiro." },
+    hero: { title: "Formulários Aduaneiros", desc: "Descarregue os formulários oficiais necessários para os processos de declaração e desalfandegamento." },
     breadcrumb: "Formulários Aduaneiros", section: "Serviços Aduaneiros",
-    component: () => <ComingSoonTab title="Formulários Aduaneiros" />,
+    component: FormulariosAduaneirosTab,
   },
   "estancias-aduaneiras": {
-    hero: { title: "Estâncias Aduaneiras", desc: "Localize postos aduaneiros, terminais de carga e fronteiras alfandegárias activas em todo o território nacional." },
+    hero: { title: "Estâncias Aduaneiras", desc: "Localize postos aduaneiros, terminais de carga e fronteiras alfandegárias ativas em todo o território nacional." },
     breadcrumb: "Estâncias Aduaneiras", section: "Serviços Aduaneiros",
-    component: () => <ComingSoonTab title="Estâncias Aduaneiras" />,
+    component: EstanciasAduaneirasTab,
   },
   "impostos": {
-    hero: { title: "Impostos", desc: "Conheça os tipos de impostos vigentes, taxas aplicáveis, obrigações do contribuinte e prazos de liquidação." },
+    hero: { title: "Impostos", desc: "Conheça os tipos de impostos vigentes, taxas aplicáveis e obrigações do contribuinte." },
     breadcrumb: "Impostos", section: "Serviços Tributários",
-    component: () => <ComingSoonTab title="Impostos" />,
+    component: ImpostosTab,
   },
   "calendario-fiscal": {
-    hero: { title: "Calendário Fiscal", desc: "Consulte as datas-limite para entrega de declarações, pagamentos e outras obrigações fiscais ao longo do ano." },
+    hero: { title: "Calendário Fiscal", desc: "Consulte as datas-limite para obrigações fiscais." },
     breadcrumb: "Calendário Fiscal", section: "Serviços Tributários",
-    component: () => <ComingSoonTab title="Calendário Fiscal" />,
+    component: FiscalCalendar,
   },
   "formularios-fiscais": {
-    hero: { title: "Formulários Fiscais", desc: "Descarregue os formulários tributários oficiais para declaração de rendimentos, IVA, IRPC, IRPS e outros impostos." },
+    hero: { title: "Formulários Fiscais", desc: "Descarregue formulários tributários para declaração de rendimentos." },
     breadcrumb: "Formulários Fiscais", section: "Serviços Tributários",
     component: () => <ComingSoonTab title="Formulários Fiscais" />,
   },
@@ -69,16 +75,8 @@ export default function Servicos() {
       <div className="shell">
         <ServicosSidebar />
         <main className="main-content">
-          
-          {/* Underlined clickable "Início" entry point */}
           <div className="custom-breadcrumb">
-            <Link 
-              to="/" 
-              style={{ color: "inherit", textDecoration: "underline" }} 
-              className="hover:opacity-80 transition-opacity"
-            >
-              Início
-            </Link>
+            <Link to="/" style={{ color: "inherit", textDecoration: "underline" }} className="hover:opacity-80 transition-opacity">Início</Link>
             <ChevronRight className="w-3.5 h-3.5 opacity-50" />
             <span style={{ color: "var(--sat-muted-fg)" }}>{tab.section}</span>
             <ChevronRight className="w-3.5 h-3.5 opacity-50" />

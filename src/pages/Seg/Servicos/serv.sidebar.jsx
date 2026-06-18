@@ -68,7 +68,7 @@ export default function ServicosSidebar() {
           <p className="text-xs text-muted-foreground leading-relaxed">
             Precisa de ajuda?{" "}
             <span className="font-bold text-primary">1266</span>
-            {" "}— linha gratuita, segunda a sexta, 07h30–15h30.
+            {" "} - linha gratuita, segunda a sexta, 07h30 - 15h30.
           </p>
         </div>
       </div>

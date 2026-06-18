@@ -12,7 +12,7 @@ export default function ContactForm() {
     e.preventDefault();
     setLoading(true);
 
-    // Opens the user's email client pre-filled — no backend required
+    // Opens the user's email client pre-filled - no backend required
     const mailtoBody = `Nome: ${form.name}\nEmail: ${form.email}\n\nMensagem:\n${form.message}`;
     const mailtoLink = `mailto:linhadocontribuinte@at.gov.mz?subject=${encodeURIComponent(
       `[Contacto AT] ${form.subject}`
