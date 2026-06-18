@@ -27,9 +27,9 @@ const navItems = [
     label: "Legislação",
     href: "#",
     submenu: [
-      { label: "Legislação Geral",     href: "" },
-      { label: "Legislação Fiscal",    href: "" },
-      { label: "Legislação Aduaneira", href: "" },
+      { label: "Legislação Geral",     href: "/legislacao/geral" },
+      { label: "Legislação Fiscal",    href: "/legislacao/fiscal" },
+      { label: "Legislação Aduaneira", href: "/legislacao/aduaneira" },
     ],
   },
   {
