@@ -2,51 +2,35 @@ import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 
-/**
- * navbar.jsx
- * ──────────
- * - No external links to the old site
- * - Items without a route yet show an "em breve" badge and are non-clickable
- * - Desktop: hover opens dropdown; clicking a top-level item with a submenu
- *   toggles the dropdown without navigating
- * - Mobile: accordion expand/collapse per section; "em breve" items greyed out
- * - Servicos submenu maps to all 7 /servicos/:slug routes
- * - Institucional submenu all point to /sobre-at (tab switching handled inside)
- */
-
 const navItems = [
   {
     label: "Institucional",
     href: "/sobre-at",
     submenu: [
-      { label: "Sobre a AT",               href: "/sobre-at" },
-      { label: "Atribuições",              href: "/sobre-at" },
-      { label: "Organograma",              href: "/sobre-at" },
-      { label: "Infraestruturas",          href: "/sobre-at" },
-      { label: "Relatórios e Publicações", href: "/sobre-at" },
-      { label: "Código de Conduta",        href: "/sobre-at" },
+      { label: "Sobre a AT",                 href: "/sobre-at/sobre" },
+      { label: "Procedimentos Aduaneiros",   href: "/sobre-at/procedimentos" },
+      { label: "Atribuições e Competências", href: "/sobre-at/atribuicoes" },
+      { label: "Organograma",                href: "/sobre-at/organograma" },
+      { label: "Infraestruturas",            href: "/sobre-at/infraestruturas" },
+      // { label: "Relatórios e Publicações",   href: "/sobre-at/relatorios" },
+      // { label: "Código de Conduta",          href: "/sobre-at/codigo-conduta" },
     ],
   },
   {
     label: "Serviços",
     href: "/servicos",
     submenu: [
-      { label: "Procedimentos Aduaneiros", href: "/servicos/procedimentos-aduaneiros" },
-      { label: "Pauta Aduaneira",          href: "/servicos/pauta-aduaneira" },
-      { label: "Formulários Aduaneiros",   href: "/servicos/formularios-aduaneiros" },
-      { label: "Estâncias Aduaneiras",     href: "/servicos/estancias-aduaneiras" },
-      { label: "Impostos",                 href: "/servicos/impostos" },
-      { label: "Calendário Fiscal",        href: "/servicos/calendario-fiscal" },
-      { label: "Formulários Fiscais",      href: "/servicos/formularios-fiscais" },
+      { label: "Serviços Aduaneiros",  href: "/servicos/aduaneiros" },
+      { label: "Serviços Tributários", href: "/servicos/impostos" },
     ],
   },
   {
     label: "Legislação",
     href: "#",
     submenu: [
-      { label: "Legislação Geral",     href: "" },
-      { label: "Legislação Fiscal",    href: "" },
-      { label: "Legislação Aduaneira", href: "" },
+      { label: "Legislação Geral",     href: "/legislacao/geral" },
+      { label: "Legislação Fiscal",    href: "/legislacao/fiscal" },
+      { label: "Legislação Aduaneira", href: "/legislacao/aduaneira" },
     ],
   },
   {
@@ -85,7 +69,6 @@ const navItems = [
   },
 ];
 
-// Smooth-scroll handler for hash links; no-op for empty hrefs
 const handleHashScroll = (e, href) => {
   if (!href) return;
   if (href.startsWith("#")) {
@@ -100,49 +83,6 @@ const handleHashScroll = (e, href) => {
   }
 };
 
-// ── Dropdown item renderer ────────────────────────────────────────────────────
-function DropdownItem({ item, closeDropdown }) {
-  // Empty href → "em breve" placeholder
-  if (!item.href) {
-    return (
-      <span
-        key={item.label}
-        className="flex items-center justify-between px-4 py-2.5 text-sm text-foreground/30 cursor-default select-none"
-      >
-        {item.label}
-        <span className="text-[10px] font-semibold bg-muted text-muted-foreground px-1.5 py-0.5 rounded-full ml-2">
-          em breve
-        </span>
-      </span>
-    );
-  }
-
-  const isInternal = item.href.startsWith("/");
-
-  if (isInternal) {
-    return (
-      <Link
-        to={item.href}
-        onClick={closeDropdown}
-        className="block px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary hover:text-primary-foreground transition-colors"
-      >
-        {item.label}
-      </Link>
-    );
-  }
-
-  return (
-    <a
-      href={item.href}
-      onClick={(e) => { handleHashScroll(e, item.href); closeDropdown(); }}
-      className="block px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary hover:text-primary-foreground transition-colors"
-    >
-      {item.label}
-    </a>
-  );
-}
-
-// ── Desktop dropdown panel ────────────────────────────────────────────────────
 function DropdownMenu({ items, isOpen, closeDropdown }) {
   return (
     <div
@@ -152,21 +92,52 @@ function DropdownMenu({ items, isOpen, closeDropdown }) {
           : "opacity-0 -translate-y-2 pointer-events-none"
       }`}
     >
-      {items.map((item) => (
-        <DropdownItem key={item.label} item={item} closeDropdown={closeDropdown} />
-      ))}
+      {items.map((item) => {
+        if (!item.href) {
+          return (
+            <span
+              key={item.label}
+              className="flex items-center justify-between px-4 py-2.5 text-sm text-foreground/35 cursor-default select-none"
+            >
+              {item.label}
+              <span className="text-[10px] font-medium bg-muted text-muted-foreground px-1.5 py-0.5 rounded-full">
+                em breve
+              </span>
+            </span>
+          );
+        }
+
+        const isInternal = item.href.startsWith("/");
+        return isInternal ? (
+          <Link
+            key={item.label}
+            to={item.href}
+            onClick={closeDropdown}
+            className="block px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary hover:text-primary-foreground transition-colors"
+          >
+            {item.label}
+          </Link>
+        ) : (
+          <a
+            key={item.label}
+            href={item.href}
+            onClick={(e) => { handleHashScroll(e, item.href); closeDropdown(); }}
+            className="block px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary hover:text-primary-foreground transition-colors"
+          >
+            {item.label}
+          </a>
+        );
+      })}
     </div>
   );
 }
 
-// ── Navbar ────────────────────────────────────────────────────────────────────
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileExpanded, setMobileExpanded] = useState(null);
   const navRef = useRef(null);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handler = (e) => {
       if (navRef.current && !navRef.current.contains(e.target)) {
@@ -184,25 +155,21 @@ export default function Navbar() {
     }
   };
 
-  const closeDropdown = () => setActiveDropdown(null);
-
   return (
     <>
-      {/* Spacer — prevents content hiding under the fixed header */}
       <div className="h-16 sm:h-20" />
 
       <header
         ref={navRef}
-        className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-border shadow-sm"
+        className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-border shadow-sm w-full"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16 sm:h-20">
 
-            {/* Logo */}
             <Link
               to="/"
               className="flex items-center gap-2 shrink-0"
-              onClick={closeDropdown}
+              onClick={() => setActiveDropdown(null)}
             >
               <img
                 src="https://at-mocambique.tributo670.workers.dev/Imagens/logo-at.png"
@@ -265,7 +232,7 @@ export default function Navbar() {
                       <DropdownMenu
                         items={item.submenu}
                         isOpen={isActive}
-                        closeDropdown={closeDropdown}
+                        closeDropdown={() => setActiveDropdown(null)}
                       />
                     )}
                   </div>
@@ -273,7 +240,6 @@ export default function Navbar() {
               })}
             </nav>
 
-            {/* Mobile hamburger */}
             <button
               onClick={() => setOpen((o) => !o)}
               className="lg:hidden p-2 rounded-lg hover:bg-muted"
@@ -284,7 +250,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* ── Mobile menu ── */}
+        {/* Mobile menu */}
         {open && (
           <div className="lg:hidden border-t border-border bg-white px-4 py-3 space-y-1 max-h-[80vh] overflow-y-auto">
             {navItems.map((item) => {
@@ -334,11 +300,9 @@ export default function Navbar() {
                     )}
                   </div>
 
-                  {/* Mobile submenu */}
                   {item.submenu && isExpanded && (
                     <div className="ml-4 mt-1 space-y-0.5 border-l-2 border-primary/20 pl-3">
                       {item.submenu.map((sub) => {
-                        // Empty href → "em breve"
                         if (!sub.href) {
                           return (
                             <span
@@ -352,7 +316,6 @@ export default function Navbar() {
                             </span>
                           );
                         }
-
                         const isInternalSub = sub.href.startsWith("/");
                         return isInternalSub ? (
                           <Link

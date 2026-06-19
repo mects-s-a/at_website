@@ -55,7 +55,7 @@ const CARDS = [
     label: "Elogie",
     sub: "Partilhe uma experiência positiva",
     modalTitle: "Enviar Elogio",
-    subject: "Elogio — Canal do Ouvinte",
+    subject: "Elogio - Canal do Ouvinte",
     iconColor: "#4ade80",
     bgFrom: "rgba(74,222,128,0.18)",
     bgTo: "rgba(74,222,128,0.08)",
@@ -70,7 +70,7 @@ const CARDS = [
     label: "Sugira",
     sub: "Envie uma sugestão de melhoria",
     modalTitle: "Enviar Sugestão",
-    subject: "Sugestão — Canal do Ouvinte",
+    subject: "Sugestão - Canal do Ouvinte",
     iconColor: "#fbbf24",
     bgFrom: "rgba(251,191,36,0.18)",
     bgTo: "rgba(251,191,36,0.08)",
@@ -85,7 +85,7 @@ const CARDS = [
     label: "Reclame",
     sub: "Reporte um problema ou insatisfação",
     modalTitle: "Registrar Reclamação",
-    subject: "Reclamação — Canal do Ouvinte",
+    subject: "Reclamação - Canal do Ouvinte",
     iconColor: "#f87171",
     bgFrom: "rgba(248,113,113,0.18)",
     bgTo: "rgba(248,113,113,0.08)",
@@ -134,7 +134,7 @@ function Modal({ card, onClose, onSuccess }) {
       `Tipo: ${card.modalTitle}`,
       `Nome: ${form.nome}`,
       `Email: ${form.email}`,
-      `Telefone: ${form.telefone || "—"}`,
+      `Telefone: ${form.telefone || "-"}`,
       ``,
       `Mensagem:`,
       form.mensagem,
@@ -308,7 +308,7 @@ export default function CanalDoOuvinte() {
             </p>
           </div>
 
-          {/* Cards Grid — Updated to responsive grid columns */}
+          {/* Cards Grid - Updated to responsive grid columns */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-2xl mx-auto">
             {CARDS.map((card) => (
               <button

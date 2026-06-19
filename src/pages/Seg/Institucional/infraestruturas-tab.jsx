@@ -29,11 +29,11 @@ export default function InfraestruturasTab() {
       </p>
 
       {/* KPI Cards */}
-      <div className="card-grid cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="infra-card" data-num="11">
           <label>Delegações Principais</label>
           <div className="value">11</div>
-          <p>Uma infraestrutura central ativa em cada capital provincial.</p>
+          <p>Uma infraestrutura central activa em cada capital provincial.</p>
         </div>
         <div className="infra-card" data-num="45">
           <label>Fronteiras Integradas</label>
@@ -47,23 +47,29 @@ export default function InfraestruturasTab() {
         </div>
       </div>
 
-      {/* Filter bar */}
-      <div className="filter-shell">
-        <div className="search-input-wrap">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
+      {/* Filter bar corrigida com Tailwind */}
+      <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-slate-50 p-4 rounded-xl border border-slate-200">
+        <div className="relative w-full md:w-72">
+          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
           <input
             type="text"
             placeholder="Pesquisar infraestrutura..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
           />
         </div>
-        <div className="region-btn-group">
+        
+        <div className="flex items-center gap-1.5 p-1 bg-slate-200/60 rounded-lg w-full md:w-auto overflow-x-auto">
           {["todos", "sul", "centro", "norte"].map((r) => (
             <button
               key={r}
               onClick={() => setSelectedRegion(r)}
-              className={`region-btn ${selectedRegion === r ? "active" : ""}`}
+              className={`flex-1 md:flex-initial px-4 py-1.5 rounded-md text-xs font-medium capitalize transition-all whitespace-nowrap ${
+                selectedRegion === r
+                  ? "bg-white text-slate-900 shadow-sm"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-white/40"
+              }`}
             >
               {r}
             </button>

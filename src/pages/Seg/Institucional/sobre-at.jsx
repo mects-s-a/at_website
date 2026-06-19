@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import sobreATStyles from "./atstyles";
 import InstitucionalSidebar from "./institucional-sidebar";
@@ -42,7 +43,7 @@ function ComingSoonTab({ title }) {
 }
 
 const HERO = {
-  sobre:           { title: "Sobre a Instituição",          desc: "Conheça o organismo do Estado responsável pela administração tributária e aduaneira nacional, instituído para impulsionar o crescimento sustentável." },
+  sobre:           { title: "Sobre a Instituição",          desc: "Conheça o organismo do State responsável pela administração tributária e aduaneira nacional, instituído para impulsionar o crescimento sustentável." },
   atribuicoes:     { title: "Atribuições e Competências",   desc: "Explore o escopo legal de atuação, competências regulamentares e as responsabilidades essenciais confiadas à nossa governação." },
   organograma:     { title: "Organograma Institucional",    desc: "Veja o encadeamento hierárquico, coordenação operacional e a árvore estrutural das Direcções Gerais da AT." },
   infraestruturas: { title: "Infraestruturas & Delegações", desc: "Localize delegações provinciais, terminais de carga internacionais e postos de fiscalização fronteiriça." },
@@ -72,11 +73,17 @@ export default function SobreAT() {
         <InstitucionalSidebar activeTab={activeTab} onTabChange={setActiveTab} />
         <main className="main-content">
 
-          {/* Breadcrumb */}
+          {/* Connected and styled Breadcrumbs */}
           <div className="custom-breadcrumb">
-            <span>Início</span>
+            <Link 
+              to="/" 
+              style={{ color: "inherit", textDecoration: "underline" }} 
+              className="hover:opacity-80 transition-opacity"
+            >
+              Início
+            </Link>
             <ChevronRight className="w-3.5 h-3.5 opacity-50" />
-            <span>Institucional</span>
+            <span style={{ color: "var(--sat-muted-fg)" }}>Institucional</span>
             <ChevronRight className="w-3.5 h-3.5 opacity-50" />
             <span className="current">{BREADCRUMB[activeTab]}</span>
           </div>

@@ -3,9 +3,9 @@ import { Calculator, Info } from "lucide-react";
 
 const TAX_BRACKETS = [
   { min: 0, max: 42000, rate: 0, fixed: 0 },
-  { min: 42001, max: 168000, rate: 0.10, fixed: 0 },
+  { min: 42001, max: 168000, rate: 0.1, fixed: 0 },
   { min: 168001, max: 504000, rate: 0.15, fixed: 12600 },
-  { min: 504001, max: 1512000, rate: 0.20, fixed: 63000 },
+  { min: 504001, max: 1512000, rate: 0.2, fixed: 63000 },
   { min: 1512001, max: 3024000, rate: 0.25, fixed: 264600 },
   { min: 3024001, max: Infinity, rate: 0.32, fixed: 642600 },
 ];
@@ -49,14 +49,14 @@ export default function TaxCalculator() {
       });
     } else {
       const revenue = val;
-      const iva = hasVAT ? revenue * 0.17 : 0;
+      const iva = hasVAT ? revenue * 0.16 : 0;
       const irpc = revenue * 0.32;
       const total = iva + irpc;
       setResult({
         rows: [
           { label: "Receita Informada", value: revenue, highlight: false },
           { label: "IRPC Estimado (32%)", value: irpc, highlight: false },
-          ...(hasVAT ? [{ label: "IVA Estimado (17%)", value: iva, highlight: false }] : []),
+          ...(hasVAT ? [{ label: "IVA Estimado (16%)", value: iva, highlight: false }] : []),
           { label: "Total de Impostos Estimado", value: total, highlight: true },
           { label: "Receita Líquida Estimada", value: revenue - total, highlight: true },
         ],
@@ -93,7 +93,7 @@ export default function TaxCalculator() {
             {type === "empresa" && (
               <label className="flex items-center gap-3 cursor-pointer">
                 <input type="checkbox" checked={hasVAT} onChange={(e) => setHasVAT(e.target.checked)} className="w-4 h-4 accent-primary" />
-                <span className="text-sm text-foreground">Sujeito a IVA (17%)</span>
+                <span className="text-sm text-foreground">Sujeito a IVA (16%)</span>
               </label>
             )}
             <button onClick={calculate} className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 rounded-xl font-semibold text-sm hover:brightness-110 transition">
