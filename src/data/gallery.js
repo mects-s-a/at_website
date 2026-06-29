@@ -1,98 +1,50 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // GALLERY DATA
-// Add albums and photos here. Each album has a title, date, cover, and photos[].
+// Add albums and photos here. Each album has a name, date, cover, and photos[].
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const albums = [
-
-
-
   {
     id: 1,
-    title: "Dia da Criança - AT 2026",
-    date: "2026-06-01",
-    cover: "/src/components/Media/Dia da Criança - AT/PAT 1 de Junho_094712.png",
+    title: "V Fórum Fiscal — Sector Extractivo",
+    date: "2025-02-20",
+    cover: "https://base44.app/api/apps/6a10556912996cfabed12a84/files/mp/public/6a10556912996cfabed12a84/e65bebe35_forum-fiscal.jpeg",
     photos: [
-      {
-        id: 1,
-        url: "/src/components/Media/Dia da Criança - AT/PAT 1 de Junho_094712.png",
-        caption: "Dia da Criança",
-      },
-      {
-        id: 2,
-        url: "/src/components/Media/Dia da Criança - AT/IMG-20260604-WA0015.jpg",
-        caption: "Presidente Aníbal Mbalango e comitiva no Terminal Internacional de Automóveis",
-        
-      },
-      {
-        id: 3,
-        url: "/src/components/Media/Dia da Criança - AT/IMG-20260604-WA0018.jpg",
-        caption: "Presidente Aníbal Mbalango e comitiva no Terminal Internacional de Automóveis",
-        
-      },
-      {
-        id: 4,
-        url: "/src/components/Media/Dia da Criança - AT/IMG-20260604-WA0019.jpg",
-        caption: "Presidente Aníbal Mbalango e comitiva no Terminal Internacional de Automóveis",
-      },
+      { id: 1, url: "https://base44.app/api/apps/6a10556912996cfabed12a84/files/mp/public/6a10556912996cfabed12a84/e65bebe35_forum-fiscal.jpeg", caption: "Abertura do Fórum" },
+      { id: 2, url: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80", caption: "Painel de Discussão" },
+      { id: 3, url: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80", caption: "Sessão Plenária" },
     ],
   },
   {
     id: 2,
-    title: "Visita de Trabalho - Delegação da Cidade de Maputo",
-    date: "2026-06-04", // Baseado na data de registro da imagem da visita
-    cover: "/src/components/Media/Content/PAT TIMAR web_050744.png",
+    title: "Dia da Mulher Moçambicana — AT 2025",
+    date: "2025-04-07",
+    cover: "https://base44.app/api/apps/6a10556912996cfabed12a84/files/mp/public/6a10556912996cfabed12a84/b979e7c2f_malhazine.jpeg",
     photos: [
-      {
-        id: 1,
-        url: "/src/components/Media/Content/PAT TIMAR web_050744.png",
-        caption: "Presidente Aníbal Mbalango e comitiva no Terminal Internacional de Automóveis",
-      },
-      {
-        id: 2,
-        url: "/src/components/Media/Content/IMG-20260604-WA0033.jpg",
-        caption: "Presidente Aníbal Mbalango e comitiva no Terminal Internacional de Automóveis",
-        
-      },
-      {
-        id: 3,
-        url: "/src/components/Media/Content/IMG-20260604-WA0034.jpg",
-        caption: "Presidente Aníbal Mbalango e comitiva no Terminal Internacional de Automóveis",
-        
-      },
-      {
-        id: 4,
-        url: "/src/components/Media/Content/IMG-20260604-WA0032.jpg",
-        caption: "Presidente Aníbal Mbalango e comitiva no Terminal Internacional de Automóveis",
-      },
+      { id: 1, url: "https://base44.app/api/apps/6a10556912996cfabed12a84/files/mp/public/6a10556912996cfabed12a84/b979e7c2f_malhazine.jpeg", caption: "Cerimónia de Abertura" },
+      { id: 2, url: "https://images.unsplash.com/photo-1573496799515-eebbb63814f2?w=800&q=80", caption: "Discurso Principal" },
+      { id: 3, url: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80", caption: "Grupo Participante" },
     ],
   },
   {
     id: 3,
-    title: "Fórum Fiscal - Sector Extractivo",
-    date: "2025-02-20",
-    cover: "https://at-mocambique.tributo670.workers.dev/Imagens/V%20F%C3%B3rum%20Fiscal%20dos%20Operadores%20do%20Sector%20Extractivo%201.jpeg",
+    title: "Modernização dos Sistemas — Lançamento",
+    date: "2025-01-15",
+    cover: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80",
     photos: [
-      {
-        id: 1,
-        url: "https://at-mocambique.tributo670.workers.dev/Imagens/V%20F%C3%B3rum%20Fiscal%20dos%20Operadores%20do%20Sector%20Extractivo%201.jpeg",
-        caption: "Abertura do Fórum",
-      },
+      { id: 1, url: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80", caption: "Nova Plataforma" },
+      { id: 2, url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80", caption: "Equipa Técnica" },
     ],
   },
   {
     id: 4,
-    title: "Dia da Mulher Moçambicana - AT 2025",
-    date: "2025-04-07",
-    cover: "https://at-mocambique.tributo670.workers.dev/Imagens/Esc%20Sec%20Malhazine%201.jpeg",
+    title: "Campanha de Sensibilização Provincial",
+    date: "2025-01-05",
+    cover: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&q=80",
     photos: [
-      {
-        id: 1,
-        url: "https://at-mocambique.tributo670.workers.dev/Imagens/Esc%20Sec%20Malhazine%201.jpeg",
-        caption: "Cerimónia de Abertura",
-      },
+      { id: 1, url: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&q=80", caption: "Acção de Sensibilização" },
+      { id: 2, url: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80", caption: "Público Participante" },
+      { id: 3, url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80", caption: "Distribuição de Material" },
     ],
   },
 ];
-
-
