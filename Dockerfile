@@ -1,5 +1,5 @@
 # ── Stage 1: Build ──────────────────────────────────────────
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
@@ -10,12 +10,13 @@ COPY . .
 RUN npm run build
 
 # ── Stage 2: Serve ──────────────────────────────────────────
-FROM nginx:alpine
+FROM nginx:1.27-alpine
 
-# Copy the built files from Stage 1
-COPY --from=builder /app/dist /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
 
-# Copy custom Nginx config (handles React routing)
+RUN rm -rf ./*
+
+COPY --from=builder /app/dist/ ./
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
