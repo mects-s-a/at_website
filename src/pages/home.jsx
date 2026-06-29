@@ -1,34 +1,38 @@
-import HeroCarousel from "../components/sections/herocarousel";
-import ServicesSection from "../components/sections/servicessection";
-import ContactChannels from "../components/features/ai-chat/contactchannels";
-import FiscalCalendar from "../components/features/fiscal-calendar/fiscalcalendar";
-import ExchangeRates from "../components/features/exchange-rates/exchangerates";
-
-// Modular feature folders
-import TaxServicesBreakdown from "../components/features/tax/taxservicesbreakdown";
-import NewsSection from "../components/features/news/newssection";
+import Navbar from "../components/navbar";
+import HeroCarousel from "../components/herocarousel";
+import ServicesSection from "../components/servicessection";
+import NewsSection from "../components/newssection";
+import ContactChannels from "../components/contactchannels";
+import CanalDoOuvinte from "../components/canaldoouvinte";
+import FiscalCalendar from "../components/fiscalcalendar";
+import ExchangeRates from "../components/exchangerates";
+import Footer from "../components/footer";
+import AIChatWidget from "../components/aichatwidget";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background font-inter">
-      {/* Removido: Navbar (Agora gerenciada pelo Layout global) */}
+    <div className="min-h-screen bg-white font-inter">
+      <Navbar />
       <HeroCarousel />
       <ServicesSection />
       <NewsSection />
       <ContactChannels />
-      <TaxServicesBreakdown />
+      <CanalDoOuvinte />
 
-      {/* Seção do Calendário e Câmbio */}
-      <section id="calendario" className="py-12 sm:py-16 bg-muted/50">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-9">
+            <h2 className="section-title">Ferramentas</h2>
+          </div>
           <div className="grid lg:grid-cols-2 gap-6">
             <FiscalCalendar />
             <ExchangeRates />
           </div>
         </div>
       </section>
-      
-      {/* Removido: Footer (Agora gerenciado pelo Layout global) */}
+
+      <Footer />
+      <AIChatWidget />
     </div>
   );
 }

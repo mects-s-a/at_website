@@ -1,3 +1,8 @@
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
+import PageHero from "../components/pagehero";
+import { TrendingUp } from "lucide-react";
+
 const rates = [
   { code: "USD", name: "Dólar Americano", country: "Estados Unidos da América", rate: 64.65, iso: "us" },
   { code: "ZAR", name: "Rand", country: "África do Sul", rate: 4.06, iso: "za" },
@@ -8,7 +13,7 @@ const rates = [
   { code: "SZL", name: "Lilangeni", country: "Eswatini", rate: 3.72, iso: "sz" },
   { code: "CHF", name: "Franco Suíço", country: "Suíça", rate: 82.17, iso: "ch" },
   { code: "JPY", name: "Yen", country: "Japão", rate: 0.41, iso: "jp" },
-  { code: "AED", name: "Dirham Aed", country: "Emirados Árabes Unidos", rate: 17.6, iso: "ae" },
+  { code: "AED", name: "Dirham Aed", country: "Emirados Árabes Unidos", rate: 17.60, iso: "ae" },
   { code: "AUD", name: "Dólar Australiano", country: "Austrália", rate: 42.53, iso: "au" },
   { code: "BWP", name: "Pula", country: "Botswana", rate: 4.6, iso: "bw" },
   { code: "NZD", name: "Dólar Nova Zelândia", country: "Nova Zelândia", rate: 37.5, iso: "nz" },
@@ -40,65 +45,53 @@ const rates = [
   { code: "AOA", name: "Kwanza", country: "Angola", rate: 0.08, iso: "ao" },
 ];
 
-
 export default function TaxaCambio() {
   return (
-    <div className="min-h-screen bg-background">
-      <div className="py-10 bg-primary text-primary-foreground">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-1">
-            Ferramentas
-          </p>
-          <h1 className="font-display text-3xl sm:text-4xl font-bold">Taxa de Câmbio</h1>
-          <p className="text-white/60 mt-2">Valores de referência em Metical (MZN)</p>
-        </div>
-      </div>
+    <div className="min-h-screen bg-white font-inter">
+      <Navbar />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+        <PageHero
+          eyebrow="Ferramentas"
+          title="Taxa de Câmbio"
+          description="Valores de referência em Metical (MZN) para principais moedas internacionais."
+          icon={TrendingUp}
+        />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
-        <div className="bg-card rounded-2xl border border-border overflow-hidden shadow-sm">
-          <div className="hidden sm:grid grid-cols-4 gap-4 px-6 py-3 bg-muted text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+        <div className="bg-white border border-at-border rounded-2xl overflow-hidden shadow-at-sm">
+          <div className="hidden sm:grid grid-cols-[2fr_1fr_2fr_1fr] gap-4 px-6 py-3 bg-at-smoke text-[10px] font-bold text-at-muted uppercase tracking-[0.1em] border-b border-at-border">
             <span>País</span>
-            <span className="sm:pl-10">Código</span>
+            <span>Código</span>
             <span>Descrição</span>
             <span className="text-right">Câmbio (MZN)</span>
           </div>
-          
-          <div className="divide-y divide-border">
+          <div className="divide-y divide-at-border/40">
             {rates.map((r) => (
-              <div 
-                key={r.code} 
-                className="grid grid-cols-2 sm:grid-cols-4 gap-4 px-6 py-3.5 hover:bg-muted/40 transition-colors items-center"
+              <div
+                key={r.code}
+                className="grid grid-cols-2 sm:grid-cols-[2fr_1fr_2fr_1fr] gap-4 px-6 py-3 hover:bg-at-smoke/40 transition-colors items-center"
               >
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-4 flex items-center justify-center overflow-hidden shrink-0">
-                    <img
-                      src={`https://flagcdn.com/w40/${r.iso}.png`}
-                      alt={r.country}
-                      className="w-full h-full object-contain filter drop-shadow-[0_1px_1px_rgba(0,0,0,0.1)]"
-                    />
-                  </div>
-                  <span className="text-sm text-foreground truncate max-w-[150px] sm:max-w-none">
-                    {r.country}
-                  </span>
+                <div className="flex items-center gap-2.5">
+                  <img
+                    src={`https://flagcdn.com/w40/${r.iso}.png`}
+                    alt={r.country}
+                    className="w-7 h-5 object-cover rounded-sm shadow-sm shrink-0"
+                  />
+                  <span className="text-sm text-at-ink truncate">{r.country}</span>
                 </div>
-                
-                <span className="font-mono font-bold text-sm text-primary pl-6 sm:pl-10">
-                  {r.code}
-                </span>
-                
-                <span className="text-sm text-muted-foreground hidden sm:block">{r.name}</span>
-                <span className="font-mono font-bold text-sm text-foreground text-right">
+                <span className="font-mono font-bold text-sm text-at-mid">{r.code}</span>
+                <span className="text-sm text-at-muted hidden sm:block">{r.name}</span>
+                <span className="font-mono font-bold text-sm text-at-ink text-right tabular-nums">
                   {r.rate.toFixed(2)}
                 </span>
               </div>
             ))}
           </div>
         </div>
-        
-        <p className="text-xs text-muted-foreground mt-4 text-center">
+        <p className="text-xs text-at-muted mt-4 text-center">
           Valores indicativos. Fonte: Autoridade Tributária de Moçambique.
         </p>
       </div>
+      <Footer />
     </div>
   );
 }

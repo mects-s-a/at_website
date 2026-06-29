@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,39 +6,135 @@
 
 @layer base {
   :root {
-    --font-inter: 'Inter', sans-serif;
+    --font-inter: 'DM Sans', sans-serif;
     --font-display: 'Playfair Display', serif;
-    --background: 210 20% 98%;
-    --foreground: 215 30% 12%;
+
+    /* AT Brand Palette */
+    --background: 220 33% 97%;
+    --foreground: 221 39% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 215 30% 12%;
+    --card-foreground: 221 39% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 30% 12%;
-    
-    /* Azul oficial extraído do logo da AT (#1B4FAB) */
-    --primary: 218 73% 38%;
+    --popover-foreground: 221 39% 11%;
+    --primary: 221 80% 24%;
     --primary-foreground: 0 0% 100%;
-    
-    --secondary: 152 55% 45%;
+    --secondary: 174 100% 27%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 210 15% 94%;
-    --muted-foreground: 215 15% 45%;
-    --accent: 152 55% 45%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
+    --muted: 220 33% 96%;
+    --muted-foreground: 218 16% 44%;
+    --accent: 41 52% 54%;
+    --accent-foreground: 221 80% 24%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 15% 90%;
-    --input: 210 15% 90%;
-    
-    --ring: 218 73% 38%;
-    --chart-1: 218 73% 38%;
-    --chart-2: 152 55% 45%;
-    --chart-3: 35 90% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --border: 218 28% 87%;
+    --input: 218 28% 87%;
+    --ring: 221 80% 24%;
     --radius: 0.75rem;
+
+    /* Extended AT tokens */
+    --at-deep: #0B2D6E;
+    --at-mid: #1A4FAF;
+    --at-light: #2E72D4;
+    --at-pale: #EEF4FF;
+    --at-teal: #00897B;
+    --at-teal-light: #26A69A;
+    --at-teal-pale: #E0F4F2;
+    --at-gold: #C9A94B;
+    --at-gold-pale: #FBF4E3;
+    --at-cream: #EAF2FC;
+    --at-smoke: #F0F5FD;
+    --at-ink: #111827;
+    --at-muted: #5B6B85;
+    --at-border: #D8E2F0;
+
+    --shadow-sm: 0 2px 8px rgba(11, 45, 110, 0.07);
+    --shadow-md: 0 6px 24px rgba(11, 45, 110, 0.11);
+    --shadow-lg: 0 16px 48px rgba(11, 45, 110, 0.16);
   }
 
-  * { @apply border-border outline-ring/50; }
-  body { @apply bg-background text-foreground; }
+  .dark {
+    --background: 221 80% 8%;
+    --foreground: 0 0% 98%;
+    --card: 221 80% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 221 80% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 221 80% 8%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 41 52% 54%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 83%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter);
+  }
+}
+
+@layer components {
+  .section-eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.14em] mb-1.5;
+    color: var(--at-mid);
+  }
+
+  .section-eyebrow-gold {
+    @apply text-[11px] font-semibold uppercase tracking-[0.14em] mb-1.5;
+    color: var(--at-mid);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    @apply text-2xl sm:text-3xl font-bold tracking-tight;
+    color: var(--at-ink);
+  }
+
+  .section-desc {
+    @apply text-sm leading-relaxed mt-2 max-w-xl;
+    color: var(--at-muted);
+  }
+
+  .eyebrow-line {
+    @apply inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em];
+    color: var(--at-light);
+  }
+
+  .eyebrow-line::before {
+    content: '';
+    @apply w-7 h-px;
+    background: var(--at-light);
+  }
+
+  .ticker-scroll {
+    animation: ticker 30s linear infinite;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .hero-pattern {
+    background-image:
+      radial-gradient(ellipse 600px 400px at 80% 50%, rgba(46, 114, 212, 0.12), transparent),
+      url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M40 40h20v20H40zM20 20h20v20H20z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .page-hero-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
 }
