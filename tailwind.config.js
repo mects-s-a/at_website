@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    darkMode: ["class"],
-    content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
+  darkMode: ["class"],
+  content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
     extend: {
       fontFamily: {
@@ -30,6 +30,26 @@ module.exports = {
           '1': 'hsl(var(--chart-1))', '2': 'hsl(var(--chart-2))',
           '3': 'hsl(var(--chart-3))', '4': 'hsl(var(--chart-4))', '5': 'hsl(var(--chart-5))'
         },
+        // AT Brand tokens
+        'at-deep':   'var(--at-deep)',
+        'at-mid':    'var(--at-mid)',
+        'at-light':  'var(--at-light)',
+        'at-pale':   'var(--at-pale)',
+        'at-teal':   'var(--at-teal)',
+        'at-teal-light': 'var(--at-teal-light)',
+        'at-teal-pale':  'var(--at-teal-pale)',
+        'at-gold':   'var(--at-gold)',
+        'at-gold-pale':  'var(--at-gold-pale)',
+        'at-cream':  'var(--at-cream)',
+        'at-smoke':  'var(--at-smoke)',
+        'at-ink':    'var(--at-ink)',
+        'at-muted':  'var(--at-muted)',
+        'at-border': 'var(--at-border)',
+      },
+      boxShadow: {
+        'at-sm': 'var(--shadow-sm)',
+        'at-md': 'var(--shadow-md)',
+        'at-lg': 'var(--shadow-lg)',
       },
       keyframes: {
         'accordion-down': { from: { height: '0' }, to: { height: 'var(--radix-accordion-content-height)' } },
