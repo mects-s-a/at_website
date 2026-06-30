@@ -5,6 +5,8 @@ import Footer from "../components/footer";
 import ReactMarkdown from "react-markdown";
 import { useAllArticles } from "../lib/use-news";
 
+
+
 function formatDate(dateStr) {
   const months = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
   const d = new Date(dateStr);
