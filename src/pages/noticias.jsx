@@ -5,11 +5,8 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import PageHero from "../components/pagehero";
 import MediaSidebar from "../components/mediasidebar";
-import AIChatWidget from "../components/aichatwidget";
-import { articles } from "../data/news";
+import { useAllArticles } from "../lib/use-news";
 import { Newspaper } from "lucide-react";
-
-const categories = ["Todas", ...Array.from(new Set(articles.map((a) => a.category)))];
 
 function formatDate(dateStr) {
   const months = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
@@ -18,7 +15,10 @@ function formatDate(dateStr) {
 }
 
 export default function Noticias() {
+  const { articles } = useAllArticles();
   const [activeCategory, setActiveCategory] = useState("Todas");
+
+  const categories = ["Todas", ...Array.from(new Set(articles.map((a) => a.category)))];
 
   const filtered =
     activeCategory === "Todas"
@@ -97,7 +97,6 @@ export default function Noticias() {
       </div>
 
       <Footer />
-      <AIChatWidget />
     </div>
   );
 }

@@ -1,4 +1,5 @@
-import { Building2, Layers, ShieldCheck, Network, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Building2, Layers, ShieldCheck, Network, MapPin, FileText } from "lucide-react";
 
 const NAV = [
   {
@@ -29,13 +30,13 @@ export default function InstitucionalSidebar({ activeTab, onTabChange }) {
                 <button
                   key={item.id}
                   onClick={() => onTabChange(item.id)}
-                  className={`w-full flex items-center gap-3 px-5 py-3 text-left transition-all duration-150 border-l-[3px] text-[14px] ${
+                  className={`group w-full flex items-center gap-3 px-5 py-3 text-left transition-all duration-150 border-l-[3px] text-[14px] ${
                     isActive
                       ? "border-l-blue-600 bg-blue-50/50 text-blue-600 font-semibold"
                       : "border-l-transparent text-slate-600 hover:bg-slate-50 hover:text-blue-600 font-medium"
                   }`}
                 >
-                  <Icon className={`shrink-0 w-4 h-4 ${isActive ? "text-blue-600" : "text-slate-400"}`} />
+                  <Icon className={`shrink-0 w-4 h-4 transition-colors ${isActive ? "text-blue-600" : "text-slate-400 group-hover:text-blue-600"}`} />
                   <span className="leading-snug">{item.label}</span>
                 </button>
               );
@@ -43,6 +44,17 @@ export default function InstitucionalSidebar({ activeTab, onTabChange }) {
             {gi < NAV.length - 1 && <div className="mx-5 my-2 border-t border-slate-100" />}
           </div>
         ))}
+
+        <div className="border-t border-slate-100">
+          <Link
+            to="/formularios#institucional"
+            className="group w-full flex items-center gap-3 px-5 py-3 transition-all duration-150 border-l-[3px] border-l-transparent text-slate-600 hover:bg-slate-50 hover:text-blue-600 font-medium text-[14px]"
+          >
+            <FileText className="shrink-0 w-4 h-4 text-slate-400 group-hover:text-blue-600 transition-colors" />
+            <span className="leading-snug">Formulários</span>
+          </Link>
+        </div>
+
         <div className="px-5 py-4 mt-1 border-t border-slate-100 bg-slate-50/50">
           <p className="text-xs text-slate-500 leading-relaxed">
             Para consultas, ligue para{" "}

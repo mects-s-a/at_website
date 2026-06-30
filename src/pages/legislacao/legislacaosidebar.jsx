@@ -96,6 +96,10 @@ export default function LegisLegislacaoSidebar() {
               </div>
             );
           })}
+          <Link to="/formularios#fiscal" className="group flex items-center gap-3 px-4 py-3 mt-2 rounded-xl border border-border text-foreground/70 hover:text-primary hover:bg-muted/60 transition-all font-medium">
+            <FileText className="w-5 h-5 shrink-0 text-muted-foreground group-hover:text-primary transition-colors" />
+            <span>Formulários</span>
+          </Link>
         </div>
         <div className="px-3 py-4 mt-8 border-t border-border bg-muted/30 rounded-xl">
           <p className="text-xs text-muted-foreground leading-relaxed">

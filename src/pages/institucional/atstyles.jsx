@@ -11,7 +11,7 @@ const sobreATStyles = `
     --sat-fg:           #151E2D;
     --sat-muted-bg:     #EEF1F5;
     --sat-muted-fg:     #5C6B82;
-    --sat-border:       #DDE3EC;
+    --sat-border:       #C7D2E4;
     --sat-bg:           #F6F8FB;
     --sat-card:         #FFFFFF;
     --sat-radius:       0.75rem;

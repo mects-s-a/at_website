@@ -81,7 +81,7 @@ export default function TaxaCambio() {
                 <span className="font-mono font-bold text-sm text-at-mid">{r.code}</span>
                 <span className="text-sm text-at-muted hidden sm:block">{r.name}</span>
                 <span className="font-mono font-bold text-sm text-at-ink text-right tabular-nums">
-                  {r.rate.toFixed(2)}
+                  {r.rate.toFixed(2)} Mzn
                 </span>
               </div>
             ))}

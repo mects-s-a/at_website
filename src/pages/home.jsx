@@ -9,6 +9,9 @@ import ExchangeRates from "../components/exchangerates";
 import Footer from "../components/footer";
 import AIChatWidget from "../components/aichatwidget";
 
+
+
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white font-inter">

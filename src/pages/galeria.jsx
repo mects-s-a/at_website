@@ -7,6 +7,7 @@ import MediaSidebar from "../components/mediasidebar";
 import AIChatWidget from "../components/aichatwidget";
 import { albums } from "../data/gallery";
 
+
 function LightBox({ album, startIndex, onClose }) {
   const [idx, setIdx] = useState(startIndex);
   const photo = album.photos[idx];

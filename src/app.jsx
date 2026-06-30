@@ -17,6 +17,7 @@ import Formularios from './pages/formularios';
 import ServicosPage from './pages/services';
 import LegislacaoPage from './pages/legislacao';
 import Informacoes from './pages/informacoes';
+import Admin from './pages/admin';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path="/legislacao/:slug" element={<LegislacaoPage />} />
             <Route path="/legislacao" element={<LegislacaoPage />} />
             <Route path="/informacoes/:slug" element={<Informacoes />} />
+            <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </Router>

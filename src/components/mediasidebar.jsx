@@ -11,7 +11,7 @@ const items = [
 export default function MediaSidebar({ activeKey }) {
   return (
     <aside className="hidden lg:block lg:w-56 shrink-0">
-      <div className="bg-white border border-at-border rounded-2xl p-4 shadow-at-sm lg:sticky lg:top-24">
+      <div className="bg-white border border-at-border shadow-at-sm rounded-2xl p-4 lg:sticky lg:top-24">
         <h3 className="text-[11px] font-bold uppercase tracking-[0.12em] text-at-muted mb-3 px-2">Média</h3>
         <nav className="flex flex-col gap-1">
           {items.map((item) => {

@@ -3,8 +3,9 @@ import Footer from "../components/footer";
 import PageHero from "../components/pagehero";
 import FiscalCalendar from "../components/fiscalcalendar";
 import ExchangeRates from "../components/exchangerates";
-import AIChatWidget from "../components/aichatwidget";
 import { Wrench } from "lucide-react";
+
+
 
 export default function Ferramentas() {
   return (
@@ -24,7 +25,6 @@ export default function Ferramentas() {
         </div>
       </div>
       <Footer />
-      <AIChatWidget />
     </div>
   );
 }

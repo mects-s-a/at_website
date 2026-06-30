@@ -4,6 +4,9 @@ import PageHero from "../components/pagehero";
 import AIChatWidget from "../components/aichatwidget";
 import { MapPin, Phone, Clock, Building2, Anchor, Plane, Ship } from "lucide-react";
 
+
+
+
 const PROVINCES = [
   {
     name: "Maputo Cidade",
@@ -11,6 +14,7 @@ const PROVINCES = [
     address: "Av. 25 de Setembro, Nº 1235, Maputo",
     phone: "+258 21 344 200",
     type: "Sede Nacional",
+    //Add On click google map link//
   },
   {
     name: "Maputo Província",
