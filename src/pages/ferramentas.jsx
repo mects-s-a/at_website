@@ -5,6 +5,8 @@ import FiscalCalendar from "../components/fiscalcalendar";
 import ExchangeRates from "../components/exchangerates";
 import { Wrench } from "lucide-react";
 
+
+
 export default function Ferramentas() {
   return (
     <div className="min-h-screen bg-white font-inter">
