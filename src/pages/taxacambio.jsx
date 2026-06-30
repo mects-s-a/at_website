@@ -1,6 +1,6 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import PageHero from "../components/PageHero";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
+import PageHero from "../components/pagehero";
 import { TrendingUp } from "lucide-react";
 
 const rates = [

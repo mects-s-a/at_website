@@ -1,5 +1,6 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
+import AIChatWidget from "../components/aichatwidget";
 import InfoPage from "./informacoes/info-page";
 
 export default function Informacoes() {
@@ -8,6 +9,7 @@ export default function Informacoes() {
       <Navbar />
       <InfoPage />
       <Footer />
+      <AIChatWidget />
     </div>
   );
 }

@@ -1,5 +1,6 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
+import AIChatWidget from "../components/aichatwidget";
 import SobreAT from "./institucional/sobre-at";
 
 export default function Institucional() {
@@ -8,6 +9,7 @@ export default function Institucional() {
       <Navbar />
       <SobreAT />
       <Footer />
+      <AIChatWidget />
     </div>
   );
 }

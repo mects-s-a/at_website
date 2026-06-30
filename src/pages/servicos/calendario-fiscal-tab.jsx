@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { getTaxDays, getTaxLabel } from "@/components/FiscalCalendar";
+import { getTaxDays, getTaxLabel } from "../../components/fiscalcalendar";
 
 const MONTH_NAMES_FULL = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
 const WEEK_DAYS = ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];

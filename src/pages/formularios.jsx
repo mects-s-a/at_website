@@ -1,5 +1,6 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
+import AIChatWidget from "../components/aichatwidget";
 import FormulariosContent from "./formularios/formularios";
 
 export default function Formularios() {
@@ -8,6 +9,7 @@ export default function Formularios() {
       <Navbar />
       <FormulariosContent />
       <Footer />
+      <AIChatWidget />
     </div>
   );
 }

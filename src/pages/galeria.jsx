@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { X, ChevronLeft, ChevronRight, Images } from "lucide-react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import PageHero from "../components/PageHero";
-import MediaSidebar from "../components/MediaSidebar";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
+import PageHero from "../components/pagehero";
+import MediaSidebar from "../components/mediasidebar";
+import AIChatWidget from "../components/aichatwidget";
 import { albums } from "../data/gallery";
+
 
 function LightBox({ album, startIndex, onClose }) {
   const [idx, setIdx] = useState(startIndex);
@@ -121,6 +123,7 @@ export default function Galeria() {
       </div>
 
       <Footer />
+      <AIChatWidget />
     </div>
   );
 }
