@@ -1,7 +1,6 @@
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
-import PageHero from "../components/pagehero";
-import AIChatWidget from "../components/aichatwidget";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import PageHero from "../components/PageHero";
 import { MapPin, Phone, Clock, Building2, Anchor, Plane, Ship } from "lucide-react";
 
 const PROVINCES = [
@@ -203,7 +202,6 @@ export default function AtendimentoPresencial() {
         </div>
       </div>
       <Footer />
-      <AIChatWidget />
     </div>
   );
 }

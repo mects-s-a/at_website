@@ -1,9 +1,8 @@
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
-import PageHero from "../components/pagehero";
-import FiscalCalendar from "../components/fiscalcalendar";
-import ExchangeRates from "../components/exchangerates";
-import AIChatWidget from "../components/aichatwidget";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import PageHero from "../components/PageHero";
+import FiscalCalendar from "../components/FiscalCalendar";
+import ExchangeRates from "../components/ExchangeRates";
 import { Wrench } from "lucide-react";
 
 export default function Ferramentas() {
@@ -24,7 +23,6 @@ export default function Ferramentas() {
         </div>
       </div>
       <Footer />
-      <AIChatWidget />
     </div>
   );
 }

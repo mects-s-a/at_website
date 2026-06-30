@@ -54,11 +54,6 @@ const TABS = {
     breadcrumb: "Calendário Fiscal", section: "Serviços Tributários",
     component: FiscalCalendar,
   },
-  "formularios-fiscais": {
-    hero: { title: "Formulários Fiscais", desc: "Descarregue formulários tributários para declaração de rendimentos." },
-    breadcrumb: "Formulários Fiscais", section: "Serviços Tributários",
-    component: () => <ComingSoonTab title="Formulários Fiscais" />,
-  },
 };
 
 export default function Servicos() {

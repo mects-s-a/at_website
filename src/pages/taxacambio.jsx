@@ -1,6 +1,6 @@
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
-import PageHero from "../components/pagehero";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import PageHero from "../components/PageHero";
 import { TrendingUp } from "lucide-react";
 
 const rates = [
@@ -81,7 +81,7 @@ export default function TaxaCambio() {
                 <span className="font-mono font-bold text-sm text-at-mid">{r.code}</span>
                 <span className="text-sm text-at-muted hidden sm:block">{r.name}</span>
                 <span className="font-mono font-bold text-sm text-at-ink text-right tabular-nums">
-                  {r.rate.toFixed(2)}
+                  {r.rate.toFixed(2)} Mzn
                 </span>
               </div>
             ))}

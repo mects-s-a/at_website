@@ -11,7 +11,7 @@ const rates = [
 
 export default function ExchangeRates() {
   return (
-    <div className="bg-white rounded-2xl border border-at-border p-6 flex flex-col justify-between h-full">
+    <div className="bg-white rounded-2xl border border-at-border shadow-at-sm p-6 flex flex-col justify-between h-full">
       <div>
         <h3 className="font-display text-xl font-bold text-at-ink mb-1">
           Taxa de Câmbio
@@ -47,7 +47,7 @@ export default function ExchangeRates() {
               </span>
 
               <p className="font-mono font-semibold text-sm text-at-ink text-right">
-                {r.rate}
+                {r.rate} Mzn
               </p>
             </div>
           ))}

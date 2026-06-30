@@ -2,9 +2,9 @@ import { useState } from "react";
 import { ChevronDown, ChevronUp, Info } from "lucide-react";
 
 export default function ImpostosTab() {
-  const [openSection, setOpenSection] = useState("capitulo1");
+  const [openSections, setOpenSections] = useState({ capitulo1: true });
 
-  const toggleSection = (id) => setOpenSection(openSection === id ? null : id);
+  const toggleSection = (id) => setOpenSections((p) => ({ ...p, [id]: !p[id] }));
 
   return (
     <div className="space-y-6 mt-8">
@@ -19,7 +19,7 @@ export default function ImpostosTab() {
         <Capitulo
           id="capitulo1"
           titulo="CAPÍTULO I — Disposições Gerais (Artigos 1.º a 9.º)"
-          isOpen={openSection === "capitulo1"}
+          isOpen={openSections["capitulo1"]}
           toggle={toggleSection}
           artigos={[
             { n: "Artigo 1.º", t: "Âmbito de aplicação", d: "O presente regulamento estabelece a forma e os procedimentos de tributação do ISPC, e aplica-se às pessoas singulares ou colectivas que desenvolvam, em território nacional, actividades agrícolas, industriais ou comerciais, tais como a comercialização agrícola, o comércio ambulante, o comércio geral por grosso, a retalho e misto, e o comércio rural, incluindo em bancas, barracas, quiosques, cantinas, lojas e tendas, bem como a indústria transformadora e a prestação de serviços, incluindo os exportadores e os importadores, de pequena dimensão." },
@@ -37,7 +37,7 @@ export default function ImpostosTab() {
         <Capitulo
           id="capitulo2"
           titulo="CAPÍTULO II — Determinação da matéria colectável, Liquidação e Pagamento (Artigos 10.º a 18.º)"
-          isOpen={openSection === "capitulo2"}
+          isOpen={openSections["capitulo2"]}
           toggle={toggleSection}
           artigos={[
             { n: "Artigo 10.º", t: "Base tributável", d: "A base tributável é o volume de negócios realizado em cada trimestre do respectivo ano civil." },
@@ -55,7 +55,7 @@ export default function ImpostosTab() {
         <Capitulo
           id="capitulo3"
           titulo="CAPÍTULO III — Obrigações Acessórias (Artigos 19.º a 24.º)"
-          isOpen={openSection === "capitulo3"}
+          isOpen={openSections["capitulo3"]}
           toggle={toggleSection}
           artigos={[
             { n: "Artigo 19.º", t: "Obrigações declarativas", d: "Os sujeitos passivos do ISPC são obrigados a apresentar as declarações de início, de alterações ou de cessação de actividade. A AT deve prestar assistência e esclarecimentos necessários no ato da receção." },
@@ -70,7 +70,7 @@ export default function ImpostosTab() {
         <Capitulo
           id="capitulo4"
           titulo="CAPÍTULO IV — Disposições Finais (Artigos 25.º a 28.º)"
-          isOpen={openSection === "capitulo4"}
+          isOpen={openSections["capitulo4"]}
           toggle={toggleSection}
           artigos={[
             { n: "Artigo 25.º", t: "Dever de fiscalização em geral", d: "O cumprimento das obrigações é fiscalizado pelos órgãos competentes, nos termos da Lei Geral Tributária e do Regulamento de Fiscalização. O regime específico é definido por Diploma do Ministro das Finanças." },
@@ -83,7 +83,7 @@ export default function ImpostosTab() {
         <Capitulo
           id="capitulo5"
           titulo="CAPÍTULO V — Disposições Transitórias (Artigo 29.º)"
-          isOpen={openSection === "capitulo5"}
+          isOpen={openSections["capitulo5"]}
           toggle={toggleSection}
           artigos={[
             { n: "Artigo 29.º", t: "Opção pelo ISPC em 2009", d: "Excepcionalmente, para o ano de 2009, sujeitos integrados no IVA, IRPC e IRPS (2ª categoria) puderam optar pelo ISPC mediante entrega de declaração até ao último dia de Junho de 2009, com efeitos a partir do mês seguinte. Nestes casos, houve a obrigatoriedade de regularização da situação tributária anterior no prazo de 30 dias." },

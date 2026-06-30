@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight, Shield, FileText } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -42,6 +42,15 @@ export default function HeroCarousel() {
   const next = useCallback(() => setActive((p) => (p + 1) % SLIDES.length), []);
   const prev = useCallback(() => setActive((p) => (p - 1 + SLIDES.length) % SLIDES.length), []);
 
+  const touchStartX = useRef(null);
+  const onTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
+  const onTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(delta) > 50) { delta > 0 ? prev() : next(); }
+    touchStartX.current = null;
+  };
+
   useEffect(() => {
     const t = setTimeout(next, SLIDES[active].duration);
     return () => clearTimeout(t);
@@ -50,7 +59,7 @@ export default function HeroCarousel() {
   const slide = SLIDES[active];
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       <div className="relative h-[380px] sm:h-[420px] md:h-[460px] lg:h-[480px]">
         <AnimatePresence mode="wait">
           {slide.type === "hero" ? (
@@ -188,17 +197,17 @@ export default function HeroCarousel() {
         {/* Navigation arrows */}
         <button
           onClick={prev}
-          className="absolute left-3 sm:left-5 bottom-4 z-10 w-9 h-9 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition backdrop-blur-sm border border-white/10"
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/35 hover:bg-black/55 text-white flex items-center justify-center transition backdrop-blur-md border border-white/15"
           aria-label="Slide anterior"
         >
-          <ChevronLeft className="w-4 h-4" />
+          <ChevronLeft className="w-5 h-5" />
         </button>
         <button
           onClick={next}
-          className="absolute right-3 sm:right-5 bottom-4 z-10 w-9 h-9 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition backdrop-blur-sm border border-white/10"
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/35 hover:bg-black/55 text-white flex items-center justify-center transition backdrop-blur-md border border-white/15"
           aria-label="Próximo slide"
         >
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRight className="w-5 h-5" />
         </button>
       </div>
     </section>

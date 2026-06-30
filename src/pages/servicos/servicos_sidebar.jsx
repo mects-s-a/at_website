@@ -16,7 +16,6 @@ const NAV = [
     items: [
       { label: "Impostos", path: "/servicos/impostos", icon: ReceiptText },
       { label: "Calendário Fiscal", path: "/servicos/calendario-fiscal", icon: CalendarDays },
-      { label: "Formulários Fiscais", path: "/servicos/formularios-fiscais", icon: FileText },
     ],
   },
 ];
@@ -44,7 +43,7 @@ export default function ServicosSidebar() {
                   key={item.path}
                   to={item.path}
                   className={[
-                    "w-full flex items-center gap-3 px-5 py-3 transition-all duration-150 border-l-[3px]",
+                    "group w-full flex items-center gap-3 px-5 py-3 transition-all duration-150 border-l-[3px]",
                     isActive
                       ? "border-l-primary bg-primary/5 text-primary font-semibold"
                       : "border-l-transparent text-foreground/60 hover:bg-muted hover:text-primary font-medium",
@@ -52,7 +51,7 @@ export default function ServicosSidebar() {
                   style={{ fontSize: "15px" }}
                 >
                   <Icon
-                    className={"shrink-0 " + (isActive ? "text-primary" : "text-muted-foreground")}
+                    className={"shrink-0 transition-colors " + (isActive ? "text-primary" : "text-muted-foreground group-hover:text-primary")}
                     style={{ width: "18px", height: "18px" }}
                   />
                   <span className="leading-snug">{item.label}</span>
@@ -63,6 +62,17 @@ export default function ServicosSidebar() {
             {gi < NAV.length - 1 && <div className="mx-5 my-2 border-t border-border" />}
           </div>
         ))}
+
+        <div className="border-t border-border">
+          <Link
+            to="/formularios#fiscal"
+            className="group w-full flex items-center gap-3 px-5 py-3 transition-all duration-150 border-l-[3px] border-l-transparent text-foreground/60 hover:bg-muted hover:text-primary font-medium"
+            style={{ fontSize: "15px" }}
+          >
+            <FileText className="shrink-0 text-muted-foreground group-hover:text-primary transition-colors" style={{ width: "18px", height: "18px" }} />
+            <span className="leading-snug">Formulários</span>
+          </Link>
+        </div>
 
         <div className="px-5 py-4 mt-1 border-t border-border">
           <p className="text-xs text-muted-foreground leading-relaxed">

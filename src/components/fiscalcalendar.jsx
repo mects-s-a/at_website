@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 
-function getTaxDays(year, month) {
+export function getTaxDays(year, month) {
   const lastDay = new Date(year, month + 1, 0).getDate();
   const days = new Set();
   days.add(15);
@@ -16,7 +16,7 @@ function getTaxDays(year, month) {
   return days;
 }
 
-function getTaxLabel(day, month, year) {
+export function getTaxLabel(day, month, year) {
   const lastDay = new Date(year, month + 1, 0).getDate();
   const labels = [];
   if (day === 15) labels.push("IVA sem movimentos · IVA com créditos");
@@ -66,7 +66,7 @@ export default function FiscalCalendar() {
   for (let i = 1; i <= daysInMonth; i++) days.push(i);
 
   return (
-    <div className="bg-white rounded-2xl border border-at-border p-6 relative select-none w-full" id="calendario">
+    <div className="bg-white rounded-2xl border border-at-border shadow-at-sm p-6 relative select-none w-full" id="calendario">
       <h3 className="font-display text-xl font-bold text-at-ink mb-4">
         Calendário Fiscal
       </h3>

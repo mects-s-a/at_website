@@ -2,9 +2,8 @@ import { useParams, Link } from "react-router-dom";
 import { Calendar, ArrowLeft } from "lucide-react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import AIChatWidget from "../components/aichatwidget";
 import ReactMarkdown from "react-markdown";
-import { articles } from "../data/news";
+import { useAllArticles } from "../lib/use-news";
 
 function formatDate(dateStr) {
   const months = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
@@ -14,7 +13,20 @@ function formatDate(dateStr) {
 
 export default function NoticiaArtigo() {
   const { id } = useParams();
-  const article = articles.find((a) => a.id === parseInt(id));
+  const { articles, loading } = useAllArticles();
+  const article = articles.find((a) => String(a.id) === String(id));
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white font-inter">
+        <Navbar />
+        <div className="max-w-3xl mx-auto px-4 py-20 text-center">
+          <p className="text-at-muted">A carregar...</p>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   if (!article) {
     return (
@@ -31,7 +43,7 @@ export default function NoticiaArtigo() {
     );
   }
 
-  const related = articles.filter((a) => a.id !== article.id).slice(0, 3);
+  const related = articles.filter((a) => String(a.id) !== String(article.id)).slice(0, 3);
 
   return (
     <div className="min-h-screen bg-white font-inter">
@@ -98,6 +110,18 @@ export default function NoticiaArtigo() {
               {article.content || article.summary}
             </ReactMarkdown>
 
+            {/* Source docx download, only for uploaded articles */}
+            {article.sourceDocx && (
+              <a
+                href={article.sourceDocx}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-2 text-[13px] text-at-mid hover:underline font-semibold"
+              >
+                Descarregar documento original (.docx)
+              </a>
+            )}
+
             {/* Share section */}
             <div className="mt-8 pt-6 border-t border-at-border flex items-center gap-3">
               <span className="text-[12px] font-semibold text-at-muted">Partilhar:</span>
@@ -149,7 +173,6 @@ export default function NoticiaArtigo() {
       </div>
 
       <Footer />
-      <AIChatWidget />
     </div>
   );
 }

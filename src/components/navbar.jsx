@@ -52,7 +52,6 @@ const navItems = [
   { label: "Concursos Públicos", href: "/informacoes/concursos" },
   { label: "Planos", href: "" },
   { label: "Boletins Informativos", href: "/informacoes/boletins" },
-  { label: "Conjuntura Fiscal", href: "/informacoes/boletins" },
   { label: "Branqueamento de Capitais", href: "/informacoes/branqueamento-de-capitais" }]
 
 },

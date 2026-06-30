@@ -1,13 +1,12 @@
-import Navbar from "../components/navbar";
-import HeroCarousel from "../components/herocarousel";
-import ServicesSection from "../components/servicessection";
-import NewsSection from "../components/newssection";
-import ContactChannels from "../components/contactchannels";
-import CanalDoOuvinte from "../components/canaldoouvinte";
-import FiscalCalendar from "../components/fiscalcalendar";
-import ExchangeRates from "../components/exchangerates";
-import Footer from "../components/footer";
-import AIChatWidget from "../components/aichatwidget";
+import Navbar from "../components/Navbar";
+import HeroCarousel from "../components/HeroCarousel";
+import ServicesSection from "../components/ServicesSection";
+import NewsSection from "../components/NewsSection";
+import ContactChannels from "../components/ContactChannels";
+import CanalDoOuvinte from "../components/CanalDoOuvinte";
+import FiscalCalendar from "../components/FiscalCalendar";
+import ExchangeRates from "../components/ExchangeRates";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -32,7 +31,6 @@ export default function Home() {
       </section>
 
       <Footer />
-      <AIChatWidget />
     </div>
   );
 }

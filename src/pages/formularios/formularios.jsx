@@ -1,12 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight, FileText, Download, Search } from "lucide-react";
 import sobreATStyles from "../institucional/atstyles";
 import { formCategories } from "../../data/forms";
+import FormulariosSidebar, { SECTIONS } from "./formularios-sidebar";
+
+
 
 export default function Formularios() {
   const [activeTab, setActiveTab] = useState(formCategories[0].id);
   const [search, setSearch] = useState("");
+  const [openSections, setOpenSections] = useState({ fiscal: true });
+
+  // Deep-link via URL hash (e.g. /formularios#fiscal)
+  useEffect(() => {
+    const applyHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      const section = SECTIONS.find((s) => s.id === hash);
+      if (section) {
+        setOpenSections((p) => ({ ...p, [section.id]: true }));
+        setActiveTab(section.cats[0]);
+        setSearch("");
+      }
+    };
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => window.removeEventListener("hashchange", applyHash);
+  }, []);
+
+  const toggleSection = (id) => setOpenSections((p) => ({ ...p, [id]: !p[id] }));
 
   const activeCategory = formCategories.find((c) => c.id === activeTab);
   const filteredForms = activeCategory.forms.filter(
@@ -19,34 +41,13 @@ export default function Formularios() {
     <div className="sobre-at-container">
       <style>{sobreATStyles}</style>
       <div className="shell">
-        {/* Sidebar */}
-        <aside className="w-72 shrink-0 select-none">
-          <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden sticky top-24">
-            <div className="px-5 pt-4 pb-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">
-              Categorias
-            </div>
-            {formCategories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => { setActiveTab(cat.id); setSearch(""); }}
-                className={`w-full flex items-center gap-3 px-5 py-3 text-left transition-all duration-150 border-l-[3px] text-[14px] ${
-                  activeTab === cat.id
-                    ? "border-l-blue-600 bg-blue-50/50 text-blue-600 font-semibold"
-                    : "border-l-transparent text-slate-600 hover:bg-slate-50 hover:text-blue-600 font-medium"
-                }`}
-              >
-                <span className="leading-snug">{cat.label}</span>
-              </button>
-            ))}
-            <div className="px-5 py-4 mt-1 border-t border-slate-100 bg-slate-50/50">
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Para consultas, ligue para{" "}
-                <span className="font-bold text-blue-600">1266</span>{" "}
-                (linha gratuita nacional).
-              </p>
-            </div>
-          </div>
-        </aside>
+        <FormulariosSidebar
+          formCategories={formCategories}
+          activeTab={activeTab}
+          setActiveTab={(id) => { setActiveTab(id); setSearch(""); }}
+          openSections={openSections}
+          toggleSection={toggleSection}
+        />
 
         <main className="main-content">
           {/* Breadcrumb */}

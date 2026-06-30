@@ -1,6 +1,5 @@
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
-import AIChatWidget from "../components/aichatwidget";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import Legislacao from "./legislacao/legislacao";
 
 export default function LegislacaoPage() {
@@ -9,7 +8,6 @@ export default function LegislacaoPage() {
       <Navbar />
       <Legislacao />
       <Footer />
-      <AIChatWidget />
     </div>
   );
 }
